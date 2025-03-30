@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -rdynamic CMakeFiles/statki.dir/main.cpp.o CMakeFiles/statki.dir/plansza/plansza.cpp.o CMakeFiles/statki.dir/gui/gui.cpp.o CMakeFiles/statki.dir/pliki/obsluga_plikow.cpp.o CMakeFiles/statki.dir/rozgrywka/rozgrywka.cpp.o CMakeFiles/statki.dir/bot/bot.cpp.o -o statki
