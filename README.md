@@ -1,1 +1,1 @@
-"# Battleships-Game-with-Smart-AI" 
+# Battleships-Game-with-Smart-AI 
