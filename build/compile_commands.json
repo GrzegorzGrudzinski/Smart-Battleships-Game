@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/main.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/main.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/main.cpp",
+  "output": "CMakeFiles/statki.dir/main.cpp.o"
+},
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/plansza/plansza.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/plansza/plansza.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/plansza/plansza.cpp",
+  "output": "CMakeFiles/statki.dir/plansza/plansza.cpp.o"
+},
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/gui/gui.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/gui/gui.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/gui/gui.cpp",
+  "output": "CMakeFiles/statki.dir/gui/gui.cpp.o"
+},
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/pliki/obsluga_plikow.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/pliki/obsluga_plikow.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/pliki/obsluga_plikow.cpp",
+  "output": "CMakeFiles/statki.dir/pliki/obsluga_plikow.cpp.o"
+},
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/rozgrywka/rozgrywka.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/rozgrywka/rozgrywka.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/rozgrywka/rozgrywka.cpp",
+  "output": "CMakeFiles/statki.dir/rozgrywka/rozgrywka.cpp.o"
+},
+{
+  "directory": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/statki.dir/bot/bot.cpp.o -c /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.cpp",
+  "file": "/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.cpp",
+  "output": "CMakeFiles/statki.dir/bot/bot.cpp.o"
+}
+]

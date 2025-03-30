@@ -1,0 +1,7 @@
+# To jest plik z ustawieniami
+# Zmienna 1
+10
+# Zmienna 2
+20
+# Zmienna 3
+30
