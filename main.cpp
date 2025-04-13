@@ -7,7 +7,7 @@
 #include "pliki/obsluga_plikow.h"
 
 /// Funkcja główna programu
-int main(int argc, char **argv)
+int main()
 {
     srand(time(0));
 
