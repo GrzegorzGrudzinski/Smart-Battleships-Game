@@ -1,0 +1,59 @@
+\doxysection{Dokumentacja pliku /home/grzegorz/\+Dokumenty/studia/\+ZAP/\+Projekt/statki/statki/plansza/plansza.cpp}
+\hypertarget{plansza_8cpp}{}\label{plansza_8cpp}\index{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/plansza/plansza.cpp@{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/plansza/plansza.cpp}}
+{\ttfamily \#include "{}plansza.\+h"{}}\newline
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{plansza_8cpp_a241c25fe41b6ca34482cfe1a9d5f13c9}{stworz\+\_\+plansze}} (int G, int D, int S)
+\item 
+void \mbox{\hyperlink{plansza_8cpp_aecd32131a3c0c683e972e06a6420fd98}{usun\+\_\+plansze}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&plansza, int G, int D)
+\item 
+void \mbox{\hyperlink{plansza_8cpp_a21f65c5638b52bb9fa9c848eac064ee6}{dodaj\+\_\+statek\+\_\+na\+\_\+plansze}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&plansza, \mbox{\hyperlink{struct_statek}{Statek}} statek\mbox{[}$\,$\mbox{]}, int rozmiar\+\_\+statku, int numer\+\_\+statku)
+\item 
+void \mbox{\hyperlink{plansza_8cpp_ab993f49c685e5ef8b21f5413ca0b9422}{usun\+\_\+statek}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&plansza, \mbox{\hyperlink{struct_statek}{Statek}} statek\mbox{[}$\,$\mbox{]}, int rozmiar\+\_\+statku, int numer\+\_\+statku)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{plansza_8cpp_a21f65c5638b52bb9fa9c848eac064ee6}\index{plansza.cpp@{plansza.cpp}!dodaj\_statek\_na\_plansze@{dodaj\_statek\_na\_plansze}}
+\index{dodaj\_statek\_na\_plansze@{dodaj\_statek\_na\_plansze}!plansza.cpp@{plansza.cpp}}
+\doxysubsubsection{\texorpdfstring{dodaj\_statek\_na\_plansze()}{dodaj\_statek\_na\_plansze()}}
+{\footnotesize\ttfamily \label{plansza_8cpp_a21f65c5638b52bb9fa9c848eac064ee6} 
+void dodaj\+\_\+statek\+\_\+na\+\_\+plansze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&}]{plansza}{, }\item[{\mbox{\hyperlink{struct_statek}{Statek}}}]{statek}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{rozmiar\+\_\+statku}{, }\item[{int}]{numer\+\_\+statku}{}\end{DoxyParamCaption})}
+
+Funkcja mająca oznaczyć pola planszy na których został umieszczony statek jako zajęte. 
+
+Definicja w linii \mbox{\hyperlink{plansza_8cpp_source_l00040}{40}} pliku \mbox{\hyperlink{plansza_8cpp_source}{plansza.\+cpp}}.
+
+\Hypertarget{plansza_8cpp_a241c25fe41b6ca34482cfe1a9d5f13c9}\index{plansza.cpp@{plansza.cpp}!stworz\_plansze@{stworz\_plansze}}
+\index{stworz\_plansze@{stworz\_plansze}!plansza.cpp@{plansza.cpp}}
+\doxysubsubsection{\texorpdfstring{stworz\_plansze()}{stworz\_plansze()}}
+{\footnotesize\ttfamily \label{plansza_8cpp_a241c25fe41b6ca34482cfe1a9d5f13c9} 
+\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} stworz\+\_\+plansze (\begin{DoxyParamCaption}\item[{int}]{G}{, }\item[{int}]{D}{, }\item[{int}]{S}{}\end{DoxyParamCaption})}
+
+Funkcja służąca do stworzenia planszy o określonych przez użytkownika rozmiarach
+
+Zwraca jako wskaźnik tablicę trójwymiarową (trzeci wymiar jest w obecnej wersji nieużywany) 
+
+Definicja w linii \mbox{\hyperlink{plansza_8cpp_source_l00003}{3}} pliku \mbox{\hyperlink{plansza_8cpp_source}{plansza.\+cpp}}.
+
+\Hypertarget{plansza_8cpp_aecd32131a3c0c683e972e06a6420fd98}\index{plansza.cpp@{plansza.cpp}!usun\_plansze@{usun\_plansze}}
+\index{usun\_plansze@{usun\_plansze}!plansza.cpp@{plansza.cpp}}
+\doxysubsubsection{\texorpdfstring{usun\_plansze()}{usun\_plansze()}}
+{\footnotesize\ttfamily \label{plansza_8cpp_aecd32131a3c0c683e972e06a6420fd98} 
+void usun\+\_\+plansze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&}]{plansza}{, }\item[{int}]{G}{, }\item[{int}]{D}{}\end{DoxyParamCaption})}
+
+Funkcja służąca do usunięcia tablicy przechowującej planszę do gry 
+
+Definicja w linii \mbox{\hyperlink{plansza_8cpp_source_l00024}{24}} pliku \mbox{\hyperlink{plansza_8cpp_source}{plansza.\+cpp}}.
+
+\Hypertarget{plansza_8cpp_ab993f49c685e5ef8b21f5413ca0b9422}\index{plansza.cpp@{plansza.cpp}!usun\_statek@{usun\_statek}}
+\index{usun\_statek@{usun\_statek}!plansza.cpp@{plansza.cpp}}
+\doxysubsubsection{\texorpdfstring{usun\_statek()}{usun\_statek()}}
+{\footnotesize\ttfamily \label{plansza_8cpp_ab993f49c685e5ef8b21f5413ca0b9422} 
+void usun\+\_\+statek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&}]{plansza}{, }\item[{\mbox{\hyperlink{struct_statek}{Statek}}}]{statek}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{rozmiar\+\_\+statku}{, }\item[{int}]{numer\+\_\+statku}{}\end{DoxyParamCaption})}
+
+Funkcja mająca wyzerować oznaczenie pola planszy na których został umieszczony statek 
+
+Definicja w linii \mbox{\hyperlink{plansza_8cpp_source_l00102}{102}} pliku \mbox{\hyperlink{plansza_8cpp_source}{plansza.\+cpp}}.
+

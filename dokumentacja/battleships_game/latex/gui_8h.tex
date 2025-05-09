@@ -1,0 +1,103 @@
+\doxysection{Dokumentacja pliku /home/grzegorz/\+Dokumenty/studia/\+ZAP/\+Projekt/statki/statki/gui/gui.h}
+\hypertarget{gui_8h}{}\label{gui_8h}\index{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/gui/gui.h@{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/gui/gui.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}../plansza/plansza.\+h"{}}\newline
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{gui_8h_a6ba0075fa588e1e916fae184c13aedb2}{menu}} ()
+\item 
+void \mbox{\hyperlink{gui_8h_ab9fb89f3501d713baaecd50012669fd4}{wypisz\+\_\+wierszami}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}t, int G, int D, int S, bool czy\+\_\+widoczne)
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gui_8h_a3eef9c8713b8bb292a6ffbafd4164881}{zgadnij\+\_\+pole}} (int szerokosc, int dlugosc, int glebokosc)
+\item 
+void \mbox{\hyperlink{gui_8h_a863cc60436f2eb070bd71990bd588461}{komunikat\+\_\+przed}} (int \texorpdfstring{$\ast$}{*}poprzedni\+\_\+ruch, int uzytkownik)
+\item 
+int \mbox{\hyperlink{gui_8h_ab7eaaa5cb5628b8795ad252185d85afa}{komunikat\+\_\+po}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plansza, int zgadywane\+\_\+pole\mbox{[}$\,$\mbox{]}, int pozostale\+\_\+statki\+\_\+aktywny\+\_\+gracz)
+\item 
+void \mbox{\hyperlink{gui_8h_a7a2cc00cc278714c74b520c95d86e2cc}{wypisz\+\_\+ruchy}} (\mbox{\hyperlink{struct_ruchy}{Ruchy}} \texorpdfstring{$\ast$}{*}w, int G, int D, int S)
+\item 
+void \mbox{\hyperlink{gui_8h_a792caf37d65da17b4ea255e1bc2cb573}{komunikaty}} (int numer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{gui_8h_ab7eaaa5cb5628b8795ad252185d85afa}\index{gui.h@{gui.h}!komunikat\_po@{komunikat\_po}}
+\index{komunikat\_po@{komunikat\_po}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{komunikat\_po()}{komunikat\_po()}}
+{\footnotesize\ttfamily \label{gui_8h_ab7eaaa5cb5628b8795ad252185d85afa} 
+int komunikat\+\_\+po (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plansza}{, }\item[{int}]{zgadywane\+\_\+pole}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{pozostale\+\_\+statki\+\_\+aktywny\+\_\+gracz}{}\end{DoxyParamCaption})}
+
+Funkcja wyświetlająca komunikat po wykonaniu ruchu -\/ Podane przez gracza pole, to czy pole zostało trafione oraz ilość pozostałych statków przeciwnika 
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00182}{182}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+
+\Hypertarget{gui_8h_a863cc60436f2eb070bd71990bd588461}\index{gui.h@{gui.h}!komunikat\_przed@{komunikat\_przed}}
+\index{komunikat\_przed@{komunikat\_przed}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{komunikat\_przed()}{komunikat\_przed()}}
+{\footnotesize\ttfamily \label{gui_8h_a863cc60436f2eb070bd71990bd588461} 
+void komunikat\+\_\+przed (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{poprzedni\+\_\+ruch}{, }\item[{int}]{uzytkownik}{}\end{DoxyParamCaption})}
+
+Funkcja wyświetlająca kominikat przed wykonaniem ruchu -\/ wyświetla numer użytkownika mającego obecnie ruch, oraz ruch, który wykonał poprzedni użytkownik \Hypertarget{gui_8h_a792caf37d65da17b4ea255e1bc2cb573}\index{gui.h@{gui.h}!komunikaty@{komunikaty}}
+\index{komunikaty@{komunikaty}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{komunikaty()}{komunikaty()}}
+{\footnotesize\ttfamily \label{gui_8h_a792caf37d65da17b4ea255e1bc2cb573} 
+void komunikaty (\begin{DoxyParamCaption}\item[{int}]{numer}{}\end{DoxyParamCaption})}
+
+Funkcja służąca do wyświetlania różnych komunikatów\+:~\newline
+-\/zatopienie statku~\newline
+-\/podanie przez gracza użytego już pola~\newline
+-\/błąd przy automatycznym rozmieszczaniu statków na planszy 
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00251}{251}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+
+\Hypertarget{gui_8h_a6ba0075fa588e1e916fae184c13aedb2}\index{gui.h@{gui.h}!menu@{menu}}
+\index{menu@{menu}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily \label{gui_8h_a6ba0075fa588e1e916fae184c13aedb2} 
+char menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Wyświetla początkowe menu wyboru, oraz przyjmuje od użytkownika wybraną opcję. Zwraca wybraną przez użytkownika opcję jako char 
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00028}{28}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+
+\Hypertarget{gui_8h_a7a2cc00cc278714c74b520c95d86e2cc}\index{gui.h@{gui.h}!wypisz\_ruchy@{wypisz\_ruchy}}
+\index{wypisz\_ruchy@{wypisz\_ruchy}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{wypisz\_ruchy()}{wypisz\_ruchy()}}
+{\footnotesize\ttfamily \label{gui_8h_a7a2cc00cc278714c74b520c95d86e2cc} 
+void wypisz\+\_\+ruchy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ruchy}{Ruchy}} \texorpdfstring{$\ast$}{*}}]{w}{, }\item[{int}]{G}{, }\item[{int}]{D}{, }\item[{int}]{S}{}\end{DoxyParamCaption})}
+
+Funkcja wypisująca listę wszystkich ruchów 
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00212}{212}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+
+\Hypertarget{gui_8h_ab9fb89f3501d713baaecd50012669fd4}\index{gui.h@{gui.h}!wypisz\_wierszami@{wypisz\_wierszami}}
+\index{wypisz\_wierszami@{wypisz\_wierszami}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{wypisz\_wierszami()}{wypisz\_wierszami()}}
+{\footnotesize\ttfamily \label{gui_8h_ab9fb89f3501d713baaecd50012669fd4} 
+void wypisz\+\_\+wierszami (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{t}{, }\item[{int}]{G}{, }\item[{int}]{D}{, }\item[{int}]{S}{, }\item[{bool}]{czy\+\_\+widoczne}{}\end{DoxyParamCaption})}
+
+Wypisuje plansze wraz z jej zawartością. Przyjmuje jako parametr planszę, jej wymiary, oraz opcję wyświetlania statków.
+
+Pola użyte -\/ bez statku oznaczone są jako "{}."{} Pola użyte -\/ ze statkiem oznaczone są jako "{}\texorpdfstring{$\ast$}{*}"{}
+
+\doxylink{struct_plansza}{Plansza} może zostać wyświetlona z widocznymi / ukrytymi statkami. Gdy statki są ukryte, początkowo cała plansza wypełniona będzie znakiem "{}\#"{}, oznaczającym nieużyte pole. 
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00123}{123}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+
+\Hypertarget{gui_8h_a3eef9c8713b8bb292a6ffbafd4164881}\index{gui.h@{gui.h}!zgadnij\_pole@{zgadnij\_pole}}
+\index{zgadnij\_pole@{zgadnij\_pole}!gui.h@{gui.h}}
+\doxysubsubsection{\texorpdfstring{zgadnij\_pole()}{zgadnij\_pole()}}
+{\footnotesize\ttfamily \label{gui_8h_a3eef9c8713b8bb292a6ffbafd4164881} 
+int \texorpdfstring{$\ast$}{*} zgadnij\+\_\+pole (\begin{DoxyParamCaption}\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{}\end{DoxyParamCaption})}
+
+Funkcja służąca do obsługi zgadywania pola od użytkownika. Przyjmuje jako parametr rozmiary planszy do kontroli czy wpisane zostało poprawne pole.
+
+Funkcja zwraca jako wskaźnik koordynaty trafionego pola w postaci tablicy\+:~\newline
+ pole\mbox{[}0\mbox{]} = szerokosc;~\newline
+ pole\mbox{[}1\mbox{]} = dlugosc; ~\newline
+ pole\mbox{[}2\mbox{]} = glebokosc;~\newline
+
+
+Definicja w linii \mbox{\hyperlink{gui_8cpp_source_l00046}{46}} pliku \mbox{\hyperlink{gui_8cpp_source}{gui.\+cpp}}.
+

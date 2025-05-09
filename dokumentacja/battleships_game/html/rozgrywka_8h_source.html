@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Statki: Plik źródłowy /home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/rozgrywka/rozgrywka.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="ship_icon.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Statki<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">prosta gra konsolowa</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_1097b10458085dead3104c6a33234b0a.html">statki</a></li><li class="navelem"><a class="el" href="dir_8a4c35a02db89477efb5a27b51ed9f41.html">rozgrywka</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">rozgrywka.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="rozgrywka_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ROZGRYWKA_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ROZGRYWKA_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="plansza_8h.html">../plansza/plansza.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// using std::string;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// STRUKTURY //</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">struct </span><a class="code hl_struct" href="struct_plansza.html">Plansza</a>; <span class="comment">//deklaracja wstepna planszy</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_ruchy.html">   18</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_ruchy.html">Ruchy</a>  {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct_ruchy.html#adaee1b6926e4fe34fa7fa0d6595f9e39">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#adaee1b6926e4fe34fa7fa0d6595f9e39">numer_ruchu</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="struct_ruchy.html#a3e0ba40b0160440952de469a534e6e90">   22</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#a3e0ba40b0160440952de469a534e6e90">uzytkownik</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Koordynaty podanego przez użytkownika pola w formie tabeli</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_ruchy.html#ae46e50aae055f4013394b7104f37f8b3">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#ae46e50aae055f4013394b7104f37f8b3">uzyte_pole</a>[3];</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Kopia planszy na której jest wykonywany ruch</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_ruchy.html#ab904eb914ed7c1c3535f39712ee01f2d">   26</a></span>    <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** <a class="code hl_variable" href="struct_ruchy.html#ab904eb914ed7c1c3535f39712ee01f2d">plansza</a>; <span class="comment">//kopia planszy w wezle( kto mial ruch, trafil czy nie)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// pola do przechowywania wymiarów planszy</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_ruchy.html#a7feb4a144d9493fb038142c67ceda023">   29</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#a7feb4a144d9493fb038142c67ceda023">G</a>;  </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_ruchy.html#a8d86a7fe1246c94e5bb28e982077f3f0">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#a8d86a7fe1246c94e5bb28e982077f3f0">D</a>;  </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="struct_ruchy.html#a5a7b9b66b00b5fb31240a32514673698">   31</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_ruchy.html#a5a7b9b66b00b5fb31240a32514673698">S</a>;  </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_ruchy.html#ac4ae35f8c14e819863f624c1c8510a85">   33</a></span>    <a class="code hl_struct" href="struct_ruchy.html">Ruchy</a>* <a class="code hl_variable" href="struct_ruchy.html#ac4ae35f8c14e819863f624c1c8510a85">nastepny</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="struct_statek.html">   40</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_statek.html">Statek</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="struct_statek.html#af015b103db85a884a4c40260ecbae198">   42</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_statek.html#af015b103db85a884a4c40260ecbae198">punkt_poczatek</a>[3];</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="struct_statek.html#a8f2438e9bf1b6270f131bed4acee03ab">   44</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_statek.html#a8f2438e9bf1b6270f131bed4acee03ab">punkt_koniec</a>[3];</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="struct_statek.html#a3e79a92af5aa6a33b0c8c393d5524aec">   46</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_statek.html#a3e79a92af5aa6a33b0c8c393d5524aec">rozmiar</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="struct_statek.html#ac633634bb23208227ff087b21514e73b">   48</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_statek.html#ac633634bb23208227ff087b21514e73b">pozostale_pola</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="struct_uzytkownik.html">   52</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_uzytkownik.html">Uzytkownik</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="struct_uzytkownik.html#a34c04844111551c2d8c06bec74f12678">   53</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_uzytkownik.html#a34c04844111551c2d8c06bec74f12678">numer</a>; </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="struct_uzytkownik.html#a0b60e725a1ffbda2c647fb8e4dfff52f">   54</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_uzytkownik.html#a0b60e725a1ffbda2c647fb8e4dfff52f">rodzaj</a>; </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="comment">// string nazwa;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// Funkcje do obsługi rozgrywki//</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">int</span> <a class="code hl_function" href="rozgrywka_8h.html#a8e34b8cdbc484c2e77eb36e59fbab5c7">rozgrywka</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">void</span> <a class="code hl_function" href="rozgrywka_8h.html#a87530be09d4467970a5c41ffc35284e8">gra</a>(<a class="code hl_struct" href="struct_uzytkownik.html">Uzytkownik</a> gracz1, <a class="code hl_struct" href="struct_uzytkownik.html">Uzytkownik</a> gracz2, <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** plansza_gracz1, <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** plansza_gracz2, <span class="keywordtype">int</span>&amp; pozostale_statki_gracz1, <span class="keywordtype">int</span>&amp; pozostale_statki_gracz2, <a class="code hl_struct" href="struct_statek.html">Statek</a> najwiekszy1[], <a class="code hl_struct" href="struct_statek.html">Statek</a> duzy1[], <a class="code hl_struct" href="struct_statek.html">Statek</a> sredni1[], <a class="code hl_struct" href="struct_statek.html">Statek</a> maly1[], <a class="code hl_struct" href="struct_statek.html">Statek</a> najwiekszy2[], <a class="code hl_struct" href="struct_statek.html">Statek</a> duzy2[], <a class="code hl_struct" href="struct_statek.html">Statek</a> sredni2[], <a class="code hl_struct" href="struct_statek.html">Statek</a> maly2[], <span class="keywordtype">int</span> statek_najwiekszy_ile, <span class="keywordtype">int</span> statek_duzy_ile, <span class="keywordtype">int</span> statek_sredni_ile, <span class="keywordtype">int</span> statek_maly_ile, <span class="keywordtype">int</span> szerokosc, <span class="keywordtype">int</span> dlugosc, <span class="keywordtype">int</span> glebokosc, <span class="keywordtype">int</span>&amp; ile_zatopiono_gracz1, <span class="keywordtype">int</span>&amp; ile_zatopiono_gracz2, <span class="keywordtype">bool</span> czy_widoczne);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">// Funkcje do sprawdzania podanego pola //</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">bool</span> <a class="code hl_function" href="rozgrywka_8h.html#afbf663901cfff30d738f4abc76cf2e84">sprawdz_pole</a>(<a class="code hl_struct" href="struct_statek.html">Statek</a> najwiekszy[], <a class="code hl_struct" href="struct_statek.html">Statek</a> duzy[], <a class="code hl_struct" href="struct_statek.html">Statek</a> sredni[], <a class="code hl_struct" href="struct_statek.html">Statek</a> maly[], <span class="keywordtype">int</span> zgadywane_pole[], <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** plansza, <span class="keywordtype">int</span> statek_najwiekszy_ile, <span class="keywordtype">int</span> statek_duzy_ile, <span class="keywordtype">int</span> statek_sredni_ile, <span class="keywordtype">int</span> statek_maly_ile, <span class="keywordtype">int</span>&amp; pozostale_statki, <span class="keywordtype">int</span>&amp; ile_zatopiono);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">bool</span> <a class="code hl_function" href="rozgrywka_8h.html#af22316bbc06ed487b0929eda0b018cb2">czy_trafiony</a>(<a class="code hl_struct" href="struct_statek.html">Statek</a> statek[], <span class="keywordtype">int</span> statek_ile, <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** plansza, <span class="keywordtype">int</span>&amp; pozostale_statki, <span class="keywordtype">int</span> S, <span class="keywordtype">int</span> D, <span class="keywordtype">int</span> G, <span class="keywordtype">int</span>&amp; ile_zatopiono);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">// obsluga listy ruchow //</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">void</span> <a class="code hl_function" href="rozgrywka_8h.html#a3bfa68d1bb0838d8c73af392d341f668">dodaj_ruch</a>(<a class="code hl_struct" href="struct_ruchy.html">Ruchy</a>*&amp; ruch, <a class="code hl_struct" href="struct_plansza.html">Plansza</a>*** plansza_gracz, <span class="keywordtype">int</span> numer_ruchu, <span class="keywordtype">int</span> uzyte_pole[], <span class="keywordtype">int</span> gracz, <span class="keywordtype">int</span> G,<span class="keywordtype">int</span> D, <span class="keywordtype">int</span> S); <span class="comment">//zapisz wykonany ruch</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="rozgrywka_8h.html#a7f84eb49aab4c3666f4177ae6e104dfb">usun_liste</a>(<a class="code hl_struct" href="struct_ruchy.html">Ruchy</a>*&amp; ruch);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="ttc" id="aplansza_8h_html"><div class="ttname"><a href="plansza_8h.html">plansza.h</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_a3bfa68d1bb0838d8c73af392d341f668"><div class="ttname"><a href="rozgrywka_8h.html#a3bfa68d1bb0838d8c73af392d341f668">dodaj_ruch</a></div><div class="ttdeci">void dodaj_ruch(Ruchy *&amp;ruch, Plansza ***plansza_gracz, int numer_ruchu, int uzyte_pole[], int gracz, int G, int D, int S)</div><div class="ttdoc">Funkcja dodająca wykonany ruch na koniec listy ruchów.</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00009">rozgrywka.cpp:9</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_a7f84eb49aab4c3666f4177ae6e104dfb"><div class="ttname"><a href="rozgrywka_8h.html#a7f84eb49aab4c3666f4177ae6e104dfb">usun_liste</a></div><div class="ttdeci">void usun_liste(Ruchy *&amp;ruch)</div><div class="ttdoc">Funkcja służąca do zwolnienia pamięci z listy ruchów.</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00047">rozgrywka.cpp:47</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_a87530be09d4467970a5c41ffc35284e8"><div class="ttname"><a href="rozgrywka_8h.html#a87530be09d4467970a5c41ffc35284e8">gra</a></div><div class="ttdeci">void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza ***plansza_gracz1, Plansza ***plansza_gracz2, int &amp;pozostale_statki_gracz1, int &amp;pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int glebokosc, int &amp;ile_zatopiono_gracz1, int &amp;ile_zatopiono_gracz2, bool czy_widoczne)</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00172">rozgrywka.cpp:172</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_a8e34b8cdbc484c2e77eb36e59fbab5c7"><div class="ttname"><a href="rozgrywka_8h.html#a8e34b8cdbc484c2e77eb36e59fbab5c7">rozgrywka</a></div><div class="ttdeci">int rozgrywka()</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00076">rozgrywka.cpp:76</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_af22316bbc06ed487b0929eda0b018cb2"><div class="ttname"><a href="rozgrywka_8h.html#af22316bbc06ed487b0929eda0b018cb2">czy_trafiony</a></div><div class="ttdeci">bool czy_trafiony(Statek statek[], int statek_ile, Plansza ***plansza, int &amp;pozostale_statki, int S, int D, int G, int &amp;ile_zatopiono)</div><div class="ttdoc">Funkcja przyjmuje jako parametr zgadywany punkt i wszystkie statki, sprawdza czy, jaki statek znajduj...</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00312">rozgrywka.cpp:312</a></div></div>
+<div class="ttc" id="arozgrywka_8h_html_afbf663901cfff30d738f4abc76cf2e84"><div class="ttname"><a href="rozgrywka_8h.html#afbf663901cfff30d738f4abc76cf2e84">sprawdz_pole</a></div><div class="ttdeci">bool sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza ***plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int &amp;pozostale_statki, int &amp;ile_zatopiono)</div><div class="ttdoc">Funkcja sprawdzająca, czy na podanym polu planszy znajduje się jakiś statek - zwraca true,...</div><div class="ttdef"><b>Definicja</b> <a href="rozgrywka_8cpp_source.html#l00365">rozgrywka.cpp:365</a></div></div>
+<div class="ttc" id="astruct_plansza_html"><div class="ttname"><a href="struct_plansza.html">Plansza</a></div><div class="ttdoc">Tworzy pole planszy do gry.</div><div class="ttdef"><b>Definicja</b> <a href="plansza_8h_source.html#l00013">plansza.h:14</a></div></div>
+<div class="ttc" id="astruct_ruchy_html"><div class="ttname"><a href="struct_ruchy.html">Ruchy</a></div><div class="ttdoc">Lista wykonanych ruchów.</div><div class="ttdef"><b>Definicja</b> <a href="#l00018">rozgrywka.h:18</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_a3e0ba40b0160440952de469a534e6e90"><div class="ttname"><a href="struct_ruchy.html#a3e0ba40b0160440952de469a534e6e90">Ruchy::uzytkownik</a></div><div class="ttdeci">int uzytkownik</div><div class="ttdoc">Numer ruszającego się obecnie użytkownika.</div><div class="ttdef"><b>Definicja</b> <a href="#l00022">rozgrywka.h:22</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_a5a7b9b66b00b5fb31240a32514673698"><div class="ttname"><a href="struct_ruchy.html#a5a7b9b66b00b5fb31240a32514673698">Ruchy::S</a></div><div class="ttdeci">int S</div><div class="ttdoc">dlugosc planszy</div><div class="ttdef"><b>Definicja</b> <a href="#l00031">rozgrywka.h:31</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_a7feb4a144d9493fb038142c67ceda023"><div class="ttname"><a href="struct_ruchy.html#a7feb4a144d9493fb038142c67ceda023">Ruchy::G</a></div><div class="ttdeci">int G</div><div class="ttdef"><b>Definicja</b> <a href="#l00029">rozgrywka.h:29</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_a8d86a7fe1246c94e5bb28e982077f3f0"><div class="ttname"><a href="struct_ruchy.html#a8d86a7fe1246c94e5bb28e982077f3f0">Ruchy::D</a></div><div class="ttdeci">int D</div><div class="ttdoc">glebokosc planszy</div><div class="ttdef"><b>Definicja</b> <a href="#l00030">rozgrywka.h:30</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_ab904eb914ed7c1c3535f39712ee01f2d"><div class="ttname"><a href="struct_ruchy.html#ab904eb914ed7c1c3535f39712ee01f2d">Ruchy::plansza</a></div><div class="ttdeci">Plansza *** plansza</div><div class="ttdef"><b>Definicja</b> <a href="#l00026">rozgrywka.h:26</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_ac4ae35f8c14e819863f624c1c8510a85"><div class="ttname"><a href="struct_ruchy.html#ac4ae35f8c14e819863f624c1c8510a85">Ruchy::nastepny</a></div><div class="ttdeci">Ruchy * nastepny</div><div class="ttdoc">szerokosc planszy</div><div class="ttdef"><b>Definicja</b> <a href="#l00033">rozgrywka.h:33</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_adaee1b6926e4fe34fa7fa0d6595f9e39"><div class="ttname"><a href="struct_ruchy.html#adaee1b6926e4fe34fa7fa0d6595f9e39">Ruchy::numer_ruchu</a></div><div class="ttdeci">int numer_ruchu</div><div class="ttdoc">Numer wykonywanego obecnie ruchu.</div><div class="ttdef"><b>Definicja</b> <a href="#l00020">rozgrywka.h:20</a></div></div>
+<div class="ttc" id="astruct_ruchy_html_ae46e50aae055f4013394b7104f37f8b3"><div class="ttname"><a href="struct_ruchy.html#ae46e50aae055f4013394b7104f37f8b3">Ruchy::uzyte_pole</a></div><div class="ttdeci">int uzyte_pole[3]</div><div class="ttdef"><b>Definicja</b> <a href="#l00024">rozgrywka.h:24</a></div></div>
+<div class="ttc" id="astruct_statek_html"><div class="ttname"><a href="struct_statek.html">Statek</a></div><div class="ttdoc">Definiuje statek umieszczany na planszy.</div><div class="ttdef"><b>Definicja</b> <a href="#l00040">rozgrywka.h:40</a></div></div>
+<div class="ttc" id="astruct_statek_html_a3e79a92af5aa6a33b0c8c393d5524aec"><div class="ttname"><a href="struct_statek.html#a3e79a92af5aa6a33b0c8c393d5524aec">Statek::rozmiar</a></div><div class="ttdeci">int rozmiar</div><div class="ttdoc">rozmiar statku - liczba pól jaką zajmował będzie na planszy</div><div class="ttdef"><b>Definicja</b> <a href="#l00046">rozgrywka.h:46</a></div></div>
+<div class="ttc" id="astruct_statek_html_a8f2438e9bf1b6270f131bed4acee03ab"><div class="ttname"><a href="struct_statek.html#a8f2438e9bf1b6270f131bed4acee03ab">Statek::punkt_koniec</a></div><div class="ttdeci">int punkt_koniec[3]</div><div class="ttdoc">ostatni punkt w którym umieszczony jest statek</div><div class="ttdef"><b>Definicja</b> <a href="#l00044">rozgrywka.h:44</a></div></div>
+<div class="ttc" id="astruct_statek_html_ac633634bb23208227ff087b21514e73b"><div class="ttname"><a href="struct_statek.html#ac633634bb23208227ff087b21514e73b">Statek::pozostale_pola</a></div><div class="ttdeci">int pozostale_pola</div><div class="ttdoc">liczba pól które nie zostały jeszcze zatopione przez przeciwnika</div><div class="ttdef"><b>Definicja</b> <a href="#l00048">rozgrywka.h:48</a></div></div>
+<div class="ttc" id="astruct_statek_html_af015b103db85a884a4c40260ecbae198"><div class="ttname"><a href="struct_statek.html#af015b103db85a884a4c40260ecbae198">Statek::punkt_poczatek</a></div><div class="ttdeci">int punkt_poczatek[3]</div><div class="ttdoc">pierwszy punkt w którym umieszczony jest statek</div><div class="ttdef"><b>Definicja</b> <a href="#l00042">rozgrywka.h:42</a></div></div>
+<div class="ttc" id="astruct_uzytkownik_html"><div class="ttname"><a href="struct_uzytkownik.html">Uzytkownik</a></div><div class="ttdoc">Struktura przechowująca informacje o numerze i rodzaju gracza (bot / uzytkownik)</div><div class="ttdef"><b>Definicja</b> <a href="#l00052">rozgrywka.h:52</a></div></div>
+<div class="ttc" id="astruct_uzytkownik_html_a0b60e725a1ffbda2c647fb8e4dfff52f"><div class="ttname"><a href="struct_uzytkownik.html#a0b60e725a1ffbda2c647fb8e4dfff52f">Uzytkownik::rodzaj</a></div><div class="ttdeci">int rodzaj</div><div class="ttdoc">numer gracza</div><div class="ttdef"><b>Definicja</b> <a href="#l00054">rozgrywka.h:54</a></div></div>
+<div class="ttc" id="astruct_uzytkownik_html_a34c04844111551c2d8c06bec74f12678"><div class="ttname"><a href="struct_uzytkownik.html#a34c04844111551c2d8c06bec74f12678">Uzytkownik::numer</a></div><div class="ttdeci">int numer</div><div class="ttdef"><b>Definicja</b> <a href="#l00053">rozgrywka.h:53</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano za pomocą&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

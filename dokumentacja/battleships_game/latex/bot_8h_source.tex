@@ -1,0 +1,29 @@
+\doxysection{bot.\+h}
+\hypertarget{bot_8h_source}{}\label{bot_8h_source}\index{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.h@{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.h}}
+\mbox{\hyperlink{bot_8h}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ BOT\_H}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ BOT\_H}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plansza_8h}{../plansza/plansza.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rozgrywka_8h}{../rozgrywka/rozgrywka.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00008}00008\ \textcolor{comment}{//\ FUNKCJE\ DO\ OBSLUGI\ STATKOW\ NA\ PLANSZY\ //}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00033}00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bot_8h_a7b0f1adf93aa5c137617a86387b4a45a}{znajdz\_ile\_statkow}}(\textcolor{keywordtype}{int}\ szerokosc,\ \textcolor{keywordtype}{int}\ dlugosc,\ \textcolor{keywordtype}{int}\ glebokosc,\ \textcolor{keywordtype}{int}\&\ statek\_najwiekszy,\ \textcolor{keywordtype}{int}\&\ statek\_duzy,\ \textcolor{keywordtype}{int}\&\ statek\_sredni,\ \textcolor{keywordtype}{int}\&\ statek\_maly,\textcolor{keywordtype}{int}\ poziom\_trudnosci\ =\ 1);}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00040}00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bot_8h_a1ba61b2c585768f352e24c28cdcba32e}{rozstaw\_statki\_losowo}}(\textcolor{keywordtype}{int}\ szerokosc,\ \textcolor{keywordtype}{int}\ dlugosc,\ \textcolor{keywordtype}{int}\ glebokosc,\ \mbox{\hyperlink{struct_statek}{Statek}}\ statek[],\ \textcolor{keywordtype}{int}\ rozmiar\_statku,\ \mbox{\hyperlink{struct_plansza}{Plansza}}***\ plansza,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00045}00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bot_8h_a3adcca7ce00f8798a8f71b576feb465c}{dodaj\_statek}}(\textcolor{keywordtype}{int}\ szerokosc,\ \textcolor{keywordtype}{int}\ dlugosc,\ \textcolor{keywordtype}{int}\ glebokosc,\ \mbox{\hyperlink{struct_statek}{Statek}}\ statek[],\ \textcolor{keywordtype}{int}\ statek\_ile,\ \textcolor{keywordtype}{int}\ statek\_rozmiar,\ \mbox{\hyperlink{struct_plansza}{Plansza}}***\&\ plansza);}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00048}00048\ \textcolor{comment}{//\ FUNKCJE\ DO\ OBSLUGI\ LOSOWAN\ BOTA\ //}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00062}00062\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{bot_8h_af93a733af33bf3b5d6b5a9f69880b60a}{losuj\_pole}}(\textcolor{keywordtype}{int}\ szerokosc,\ \textcolor{keywordtype}{int}\ dlugosc,\ \textcolor{keywordtype}{int}\ glebokosc,\ \mbox{\hyperlink{struct_plansza}{Plansza}}***\ plansza,\ \textcolor{keywordtype}{int}\ ile\_zatopiono);\ \textcolor{comment}{/*losuj\ pole\ uzytkownika\ -\/\ \ */}}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00067}00067\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bot_8h_a336b1e25d1b8d31a150c633cda688102}{trafiono}}(\mbox{\hyperlink{struct_plansza}{Plansza}}***\ plansza,\ \textcolor{keywordtype}{int}\ pole1,\ \textcolor{keywordtype}{int}\ pole2,\ \textcolor{keywordtype}{int}\&\ ostatnie\_pole,\ \textcolor{keywordtype}{int}\ pole\_sprawdzajace,\ \textcolor{keywordtype}{int}\ kierunek,\ \textcolor{keywordtype}{int}\ ile\_zatopiono,\ \textcolor{keywordtype}{int}\ szerokosc,\ \textcolor{keywordtype}{int}\ dlugosc,\ \textcolor{keywordtype}{int}\ glebokosc);}
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{bot_8h_source_l00069}00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

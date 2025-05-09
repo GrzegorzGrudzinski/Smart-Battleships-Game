@@ -1,0 +1,96 @@
+\doxysection{Dokumentacja pliku /home/grzegorz/\+Dokumenty/studia/\+ZAP/\+Projekt/statki/statki/bot/bot.cpp}
+\hypertarget{bot_8cpp}{}\label{bot_8cpp}\index{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.cpp@{/home/grzegorz/Dokumenty/studia/ZAP/Projekt/statki/statki/bot/bot.cpp}}
+{\ttfamily \#include "{}bot.\+h"{}}\newline
+{\ttfamily \#include "{}../gui/gui.\+h"{}}\newline
+Wykres zależności załączania dla bot.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{bot_8cpp_a040cd4c6e044820a5fde134e91b09748}{znajdz\+\_\+ile\+\_\+statkow}} (int szerokosc, int dlugosc, int glebokosc, int \&statek\+\_\+najwiekszy, int \&statek\+\_\+duzy, int \&statek\+\_\+sredni, int \&statek\+\_\+maly, int poziom\+\_\+trudnosci)
+\item 
+void \mbox{\hyperlink{bot_8cpp_a1ba61b2c585768f352e24c28cdcba32e}{rozstaw\+\_\+statki\+\_\+losowo}} (int szerokosc, int dlugosc, int glebokosc, \mbox{\hyperlink{struct_statek}{Statek}} statek\mbox{[}$\,$\mbox{]}, int rozmiar\+\_\+statku, \mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plansza, int i)
+\item 
+void \mbox{\hyperlink{bot_8cpp_a3adcca7ce00f8798a8f71b576feb465c}{dodaj\+\_\+statek}} (int szerokosc, int dlugosc, int glebokosc, \mbox{\hyperlink{struct_statek}{Statek}} statek\mbox{[}$\,$\mbox{]}, int statek\+\_\+ile, int statek\+\_\+rozmiar, \mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&plansza)
+\item 
+int \mbox{\hyperlink{bot_8cpp_a336b1e25d1b8d31a150c633cda688102}{trafiono}} (\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plansza, int pole1, int pole2, int \&ostatnie\+\_\+pole, int pole\+\_\+sprawdzajace, int kierunek, int ile\+\_\+zatopiono, int szerokosc, int dlugosc, int glebokosc)
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{bot_8cpp_af93a733af33bf3b5d6b5a9f69880b60a}{losuj\+\_\+pole}} (int szerokosc, int dlugosc, int glebokosc, \mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plansza, int ile\+\_\+zatopiono)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{bot_8cpp_a3adcca7ce00f8798a8f71b576feb465c}\index{bot.cpp@{bot.cpp}!dodaj\_statek@{dodaj\_statek}}
+\index{dodaj\_statek@{dodaj\_statek}!bot.cpp@{bot.cpp}}
+\doxysubsubsection{\texorpdfstring{dodaj\_statek()}{dodaj\_statek()}}
+{\footnotesize\ttfamily \label{bot_8cpp_a3adcca7ce00f8798a8f71b576feb465c} 
+void dodaj\+\_\+statek (\begin{DoxyParamCaption}\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{, }\item[{\mbox{\hyperlink{struct_statek}{Statek}}}]{statek}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{statek\+\_\+ile}{, }\item[{int}]{statek\+\_\+rozmiar}{, }\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\&}]{plansza}{}\end{DoxyParamCaption})}
+
+Funkcja ktora po wywolaniu umieszcza wszystkie statki danego typu na planszy -\/ losuje jego pozycje a nastepnie oznacza pola planszy jako zajete 
+
+Definicja w linii \mbox{\hyperlink{bot_8cpp_source_l00173}{173}} pliku \mbox{\hyperlink{bot_8cpp_source}{bot.\+cpp}}.
+
+\Hypertarget{bot_8cpp_af93a733af33bf3b5d6b5a9f69880b60a}\index{bot.cpp@{bot.cpp}!losuj\_pole@{losuj\_pole}}
+\index{losuj\_pole@{losuj\_pole}!bot.cpp@{bot.cpp}}
+\doxysubsubsection{\texorpdfstring{losuj\_pole()}{losuj\_pole()}}
+{\footnotesize\ttfamily \label{bot_8cpp_af93a733af33bf3b5d6b5a9f69880b60a} 
+int \texorpdfstring{$\ast$}{*} losuj\+\_\+pole (\begin{DoxyParamCaption}\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{, }\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plansza}{, }\item[{int}]{ile\+\_\+zatopiono}{}\end{DoxyParamCaption})}
+
+Funkcja sluzaca do znajdowania przez komputer statkow na planszy
+
+Początkowo, losowane będzie pole na całej planszy. Gdy pole zwaiera statek zmniejszony zostanie obszar losowania -\/ zgadywane będą pola nad, pod i obok trafionym polem Gdy trafione zostaną dwa pola obok siebie, wywolana zostanie funkcja obslugujaca losowanie statku o znanym kierunku.
+
+Funkcja zwraca jako wskaźnik koordynaty trafionego pola w postaci tablicy\+:~\newline
+ pole\mbox{[}0\mbox{]} = szerokosc;~\newline
+ pole\mbox{[}1\mbox{]} = dlugosc; ~\newline
+ pole\mbox{[}2\mbox{]} = glebokosc;~\newline
+
+
+Definicja w linii \mbox{\hyperlink{bot_8cpp_source_l00260}{260}} pliku \mbox{\hyperlink{bot_8cpp_source}{bot.\+cpp}}.
+
+\Hypertarget{bot_8cpp_a1ba61b2c585768f352e24c28cdcba32e}\index{bot.cpp@{bot.cpp}!rozstaw\_statki\_losowo@{rozstaw\_statki\_losowo}}
+\index{rozstaw\_statki\_losowo@{rozstaw\_statki\_losowo}!bot.cpp@{bot.cpp}}
+\doxysubsubsection{\texorpdfstring{rozstaw\_statki\_losowo()}{rozstaw\_statki\_losowo()}}
+{\footnotesize\ttfamily \label{bot_8cpp_a1ba61b2c585768f352e24c28cdcba32e} 
+void rozstaw\+\_\+statki\+\_\+losowo (\begin{DoxyParamCaption}\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{, }\item[{\mbox{\hyperlink{struct_statek}{Statek}}}]{statek}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{rozmiar\+\_\+statku}{, }\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plansza}{, }\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+Funkcja rozstawia w sposob losowy statki na planszy Przyjmuje jako parametry rozmiary planszy, statek który ma zostać umieszczony na planszy, plansze na której statek ma zostać umieszczony i numer statku (i) 
+
+Definicja w linii \mbox{\hyperlink{bot_8cpp_source_l00061}{61}} pliku \mbox{\hyperlink{bot_8cpp_source}{bot.\+cpp}}.
+
+\Hypertarget{bot_8cpp_a336b1e25d1b8d31a150c633cda688102}\index{bot.cpp@{bot.cpp}!trafiono@{trafiono}}
+\index{trafiono@{trafiono}!bot.cpp@{bot.cpp}}
+\doxysubsubsection{\texorpdfstring{trafiono()}{trafiono()}}
+{\footnotesize\ttfamily \label{bot_8cpp_a336b1e25d1b8d31a150c633cda688102} 
+int trafiono (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_plansza}{Plansza}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plansza}{, }\item[{int}]{pole1}{, }\item[{int}]{pole2}{, }\item[{int \&}]{ostatnie\+\_\+pole}{, }\item[{int}]{pole\+\_\+sprawdzajace}{, }\item[{int}]{kierunek}{, }\item[{int}]{ile\+\_\+zatopiono}{, }\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{}\end{DoxyParamCaption})}
+
+Funkcja zgadująca pola statku, gdy znany jest kierunek w jakim jest ustawiony (na podstawie dwóch sąsiednich zgadniętych pól) 
+
+Definicja w linii \mbox{\hyperlink{bot_8cpp_source_l00183}{183}} pliku \mbox{\hyperlink{bot_8cpp_source}{bot.\+cpp}}.
+
+\Hypertarget{bot_8cpp_a040cd4c6e044820a5fde134e91b09748}\index{bot.cpp@{bot.cpp}!znajdz\_ile\_statkow@{znajdz\_ile\_statkow}}
+\index{znajdz\_ile\_statkow@{znajdz\_ile\_statkow}!bot.cpp@{bot.cpp}}
+\doxysubsubsection{\texorpdfstring{znajdz\_ile\_statkow()}{znajdz\_ile\_statkow()}}
+{\footnotesize\ttfamily \label{bot_8cpp_a040cd4c6e044820a5fde134e91b09748} 
+void znajdz\+\_\+ile\+\_\+statkow (\begin{DoxyParamCaption}\item[{int}]{szerokosc}{, }\item[{int}]{dlugosc}{, }\item[{int}]{glebokosc}{, }\item[{int \&}]{statek\+\_\+najwiekszy}{, }\item[{int \&}]{statek\+\_\+duzy}{, }\item[{int \&}]{statek\+\_\+sredni}{, }\item[{int \&}]{statek\+\_\+maly}{, }\item[{int}]{poziom\+\_\+trudnosci}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+Funkcja oblicza ilosc statkow dostepnych w trakcie rozgrywki na podstawie rozmiaru planszy~\newline
+Przyjmuje jako parametr szerokosc, dlugosc i glebokosc planszy i zwraca przez referencje liczbe kazdego z rodzaju statkow (jako int)~\newline
+~\newline
+ Funkcja posiada mozliwosc zmiany poziomu trudnosci rozgrywki na podstawie zmiejszania calkowitego pola powierzchni zajmowanej przez statki (domyslnie nieuzywane)
+
+Statki maja zajmowac \texorpdfstring{$\sim$}{\string~}30\% planszy, obliczane to jest na podstawie wzoru\+:~\newline
+pole\+\_\+statkow = 1/poziom\+\_\+trudnosci \texorpdfstring{$\ast$}{*} (0.\+3) \texorpdfstring{$\ast$}{*} pole\+\_\+planszy
+
+Domyslnie na planszy 7x9 znajduje sie 5 statkow \+: ~\newline
+1x najwiekszy\+: 5 1x duzy\+: 4 2x sredni\+: 3 1x maly\+: 2~\newline
+~\newline
+ Ilosc statkow okreslana jest przez zaleznosci\+: statek\+\_\+najwiekszy = (pole\+\_\+statkow / domyslna\+\_\+powierzchnia\+\_\+statkow); ~\newline
+statek\+\_\+duzy = (pole\+\_\+statkow / domyslna\+\_\+powierzchnia\+\_\+statkow); ~\newline
+statek\+\_\+sredni = 2 \texorpdfstring{$\ast$}{*} pole\+\_\+statkow / domyslna\+\_\+powierzchnia\+\_\+statkow; ~\newline
+statek\+\_\+maly = pole\+\_\+statkow / domyslna\+\_\+powierzchnia\+\_\+statkow; ~\newline
+~\newline
+ gdzie domyslna\+\_\+powierzchnia\+\_\+statkow to suma pola wszystkich statkow w domyslnej ilosci + 1 
+
+Definicja w linii \mbox{\hyperlink{bot_8cpp_source_l00009}{9}} pliku \mbox{\hyperlink{bot_8cpp_source}{bot.\+cpp}}.
+
