@@ -1,6 +1,5 @@
 /build/
 /*.exe
 *.o
-*.out
-*.log
-/latex/
+dokumentacja/
+latex/
