@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['g_0',['G',['../struct_ruchy.html#a7feb4a144d9493fb038142c67ceda023',1,'Ruchy']]],
+  ['gra_1',['gra',['../rozgrywka_8cpp.html#a87530be09d4467970a5c41ffc35284e8',1,'gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza ***plansza_gracz1, Plansza ***plansza_gracz2, int &amp;pozostale_statki_gracz1, int &amp;pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int glebokosc, int &amp;ile_zatopiono_gracz1, int &amp;ile_zatopiono_gracz2, bool czy_widoczne):&#160;rozgrywka.cpp'],['../rozgrywka_8h.html#a87530be09d4467970a5c41ffc35284e8',1,'gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza ***plansza_gracz1, Plansza ***plansza_gracz2, int &amp;pozostale_statki_gracz1, int &amp;pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int glebokosc, int &amp;ile_zatopiono_gracz1, int &amp;ile_zatopiono_gracz2, bool czy_widoczne):&#160;rozgrywka.cpp']]],
+  ['gui_2ecpp_2',['gui.cpp',['../gui_8cpp.html',1,'']]],
+  ['gui_2eh_3',['gui.h',['../gui_8h.html',1,'']]]
+];
