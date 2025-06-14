@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['d_0',['D',['../struct_ruchy.html#a8d86a7fe1246c94e5bb28e982077f3f0',1,'Ruchy']]],
-  ['dodaj_5fruch_1',['dodaj_ruch',['../rozgrywka_8cpp.html#a3bfa68d1bb0838d8c73af392d341f668',1,'dodaj_ruch(Ruchy *&amp;ruch, Plansza ***plansza_gracz, int numer_ruchu, int uzyte_pole[], int gracz, int G, int D, int S):&#160;rozgrywka.cpp'],['../rozgrywka_8h.html#a3bfa68d1bb0838d8c73af392d341f668',1,'dodaj_ruch(Ruchy *&amp;ruch, Plansza ***plansza_gracz, int numer_ruchu, int uzyte_pole[], int gracz, int G, int D, int S):&#160;rozgrywka.cpp']]],
-  ['dodaj_5fstatek_2',['dodaj_statek',['../bot_8cpp.html#a3adcca7ce00f8798a8f71b576feb465c',1,'dodaj_statek(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza ***&amp;plansza):&#160;bot.cpp'],['../bot_8h.html#a3adcca7ce00f8798a8f71b576feb465c',1,'dodaj_statek(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza ***&amp;plansza):&#160;bot.cpp']]],
-  ['dodaj_5fstatek_5fna_5fplansze_3',['dodaj_statek_na_plansze',['../plansza_8cpp.html#a21f65c5638b52bb9fa9c848eac064ee6',1,'dodaj_statek_na_plansze(Plansza ***&amp;plansza, Statek statek[], int rozmiar_statku, int numer_statku):&#160;plansza.cpp'],['../plansza_8h.html#a21f65c5638b52bb9fa9c848eac064ee6',1,'dodaj_statek_na_plansze(Plansza ***&amp;plansza, Statek statek[], int rozmiar_statku, int numer_statku):&#160;plansza.cpp']]]
-];

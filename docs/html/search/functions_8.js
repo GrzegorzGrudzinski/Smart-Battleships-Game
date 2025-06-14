@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['sprawdz_5fpole_0',['sprawdz_pole',['../rozgrywka_8cpp.html#afbf663901cfff30d738f4abc76cf2e84',1,'sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza ***plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int &amp;pozostale_statki, int &amp;ile_zatopiono):&#160;rozgrywka.cpp'],['../rozgrywka_8h.html#afbf663901cfff30d738f4abc76cf2e84',1,'sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza ***plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int &amp;pozostale_statki, int &amp;ile_zatopiono):&#160;rozgrywka.cpp']]],
-  ['stworz_5fplansze_1',['stworz_plansze',['../plansza_8cpp.html#a241c25fe41b6ca34482cfe1a9d5f13c9',1,'stworz_plansze(int G, int D, int S):&#160;plansza.cpp'],['../plansza_8h.html#a241c25fe41b6ca34482cfe1a9d5f13c9',1,'stworz_plansze(int G, int D, int S):&#160;plansza.cpp']]]
-];

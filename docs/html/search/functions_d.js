@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['zapisz_5fliste_5fruchow_0',['zapisz_liste_ruchow',['../obsluga__plikow_8cpp.html#a81f6e010272a95dddaa9eb76031ccd89',1,'zapisz_liste_ruchow(Ruchy *ruch, int G, int D, int S):&#160;obsluga_plikow.cpp'],['../obsluga__plikow_8h.html#a81f6e010272a95dddaa9eb76031ccd89',1,'zapisz_liste_ruchow(Ruchy *ruch, int G, int D, int S):&#160;obsluga_plikow.cpp']]],
-  ['zgadnij_5fpole_1',['zgadnij_pole',['../gui_8cpp.html#a3eef9c8713b8bb292a6ffbafd4164881',1,'zgadnij_pole(int szerokosc, int dlugosc, int glebokosc):&#160;gui.cpp'],['../gui_8h.html#a3eef9c8713b8bb292a6ffbafd4164881',1,'zgadnij_pole(int szerokosc, int dlugosc, int glebokosc):&#160;gui.cpp']]],
-  ['znajdz_5file_5fstatkow_2',['znajdz_ile_statkow',['../bot_8cpp.html#a040cd4c6e044820a5fde134e91b09748',1,'znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int &amp;statek_najwiekszy, int &amp;statek_duzy, int &amp;statek_sredni, int &amp;statek_maly, int poziom_trudnosci):&#160;bot.cpp'],['../bot_8h.html#a7b0f1adf93aa5c137617a86387b4a45a',1,'znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int &amp;statek_najwiekszy, int &amp;statek_duzy, int &amp;statek_sredni, int &amp;statek_maly, int poziom_trudnosci=1):&#160;bot.cpp']]]
-];
