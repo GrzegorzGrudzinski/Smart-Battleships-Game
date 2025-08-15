@@ -1,12 +1,15 @@
 #include "bot.h"
 #include "../gui/gui.h"
+#include <cstdlib>
 
-
-
+using namespace std;
 ////////////////////////////////////////
 //********        BOT         ********//
 ////////////////////////////////////////
-void znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int& statek_najwiekszy, int& statek_duzy, int& statek_sredni, int& statek_maly, int poziom_trudnosci) //znajdz jakie statki mozna ustawic na planszy
+void znajdz_ile_statkow(
+    int szerokosc, int dlugosc, int glebokosc,
+    int& statek_najwiekszy, int& statek_duzy, int& statek_sredni, int& statek_maly,
+    int poziom_trudnosci) //znajdz jakie statki mozna ustawic na planszy
 {
     /*
         pole 7x9 [63]:
@@ -32,7 +35,13 @@ void znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int& statek_n
         return;
     }
 
-    int pole_statkow = 1/(double(poziom_trudnosci) * (0.3) * double(pole_planszy)) ;
+    int pole_statkow = (1/(double(poziom_trudnosci)) * (0.3) * double(pole_planszy)) ;
+
+    //////////////////////////////////////////////////////////////////
+    cout<<endl<<"Pole statkow: "<<pole_statkow<<endl;
+    cout<<endl<<"Poziom trudnosci: "<<poziom_trudnosci<<endl;
+    cout<<endl<<"Pole planszy: "<<pole_planszy<<endl;
+    //////////////////////////////////////////////////////////////////
 
     if(pole_statkow<1)
         pole_statkow = 1;
@@ -44,21 +53,23 @@ void znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int& statek_n
     statek_maly = pole_statkow / domyslna_powierzchnia_statkow;
 
     /*/////////////////////////////////////////////////////////////////
-    // cout<<endl<<"Pole planszy: "<<pole_planszy<<endl;
-    // cout<<"Pole statkow: "<<pole_statkow<<endl;
-    // cout<<"Faktyczne pole statkow: "<<statek_duzy*4+statek_najwiekszy*5+statek_maly*2+statek_sredni*3<<endl;
-    //
-    // cout<<"Ilosc statkow: "<<'\t';
-    // cout<<statek_najwiekszy<<'\t';
-    // cout<<statek_duzy<<'\t';
-    // cout<<statek_sredni<<'\t';
-    // cout<<statek_maly<<endl<<endl;
-    */
+     cout<<endl<<"Pole planszy: "<<pole_planszy<<endl;
+     cout<<"Pole statkow: "<<pole_statkow<<endl;
+     cout<<"Faktyczne pole statkow: "<<statek_duzy*4+statek_najwiekszy*5+statek_maly*2+statek_sredni*3<<endl;
+
+     cout<<"Ilosc statkow: "<<'\t';
+     cout<<statek_najwiekszy<<'\t';
+     cout<<statek_duzy<<'\t';
+     cout<<statek_sredni<<'\t';
+     cout<<statek_maly<<endl<<endl;
+    /*/
 
 }
 
 //Przeniesc do foldera bot
-void rozstaw_statki_losowo(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int rozmiar_statku, Plansza*** plansza, int i)
+void rozstaw_statki_losowo(
+    int szerokosc, int dlugosc, int glebokosc,
+    Statek statek[], int rozmiar_statku, Plansza*** plansza, int i)
 {
         //liczniki awaryjne do petli
         int licznik1 = 0;
@@ -156,16 +167,16 @@ void rozstaw_statki_losowo(int szerokosc, int dlugosc, int glebokosc, Statek sta
         statek[i].punkt_koniec[losuj_kierunek] += (statek[i].rozmiar-1)*wspolczynnik_losowania_zwrot;
 
         /*//////////////////////////////////////////////////
-        // cout<<endl<<"Poczatek: ";
-        // cout<<endl<<statek[i].punkt_poczatek[0]<<'\t';
-        // cout<<statek[i].punkt_poczatek[1]<<'\t';
-        // cout<<statek[i].punkt_poczatek[2]<<endl;
-        // cout<<"Koniec: ";
-        // cout<<endl<<statek[i].punkt_koniec[0]<<'\t';
-        // cout<<statek[i].punkt_koniec[1]<<'\t';
-        // cout<<statek[i].punkt_koniec[2]<<endl<<endl;
-        // cout<<endl<<plansza[0][losuj_dlugosc][losuj_szerokosc].statek<<endl;
-        */
+         cout<<endl<<"Poczatek: ";
+         cout<<endl<<statek[i].punkt_poczatek[0]<<'\t';
+         cout<<statek[i].punkt_poczatek[1]<<'\t';
+         cout<<statek[i].punkt_poczatek[2]<<endl;
+         cout<<"Koniec: ";
+         cout<<endl<<statek[i].punkt_koniec[0]<<'\t';
+         cout<<statek[i].punkt_koniec[1]<<'\t';
+         cout<<statek[i].punkt_koniec[2]<<endl<<endl;
+         cout<<endl<<plansza[0][losuj_dlugosc][losuj_szerokosc].statek<<endl;
+        /*/
 }
 
 
@@ -426,6 +437,8 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
     pole[1] = losuj_dlugosc;
     pole[2] = 0;
 
-    // cout<<"Zgadywane wspolrzedne (SDG): "<<pole[0]<<pole[1]<<pole[2]<<endl;
+    /*//////////////////////////////////////////////////
+     cout<<"Zgadywane wspolrzedne (SDG): "<<pole[0]<<pole[1]<<pole[2]<<endl;
+     /*/
     return pole;
 }

@@ -72,6 +72,7 @@ int* metoda_zgadywania(int S,int D, int G, Uzytkownik gracz, Plansza*** plansza,
     if(gracz.rodzaj == 1) return zgadnij_pole(S,D,G);
     else return losuj_pole(S,D,G, plansza, ile_zatopiono);
 }
+
 //glowna petla gry - tu robione sa wszystkie nastawy przed rozgrywka po czym uruchamiana jest sama gra
 int rozgrywka()
 {
@@ -97,6 +98,7 @@ int rozgrywka()
     int statek_duzy_ile;
     int statek_sredni_ile;
     int statek_maly_ile;
+
     znajdz_ile_statkow(S,D,G, statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile);
 
     int poczatkowa_liczba_statkow = statek_najwiekszy_ile+statek_duzy_ile+statek_sredni_ile+statek_maly_ile;

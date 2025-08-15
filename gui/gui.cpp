@@ -1,8 +1,9 @@
 #include <iostream>
 #include <cstdio>
 #include <iomanip>
-#include <stdio.h> //system
-#include<unistd.h> //sleep
+#include <cstdlib>
+#include <unistd.h> //sleep
+#include <windows.h> // Wymagane na Windows
 
 #include "../plansza/plansza.h"
 #include "gui.h"
@@ -25,10 +26,26 @@ Podane pole:
  A-66   Z-90
  a-97   z-122
 */
+
+void czysc_konsole()
+{
+  for (int i=0; i<100; i++) {
+      cout<<endl;
+  }
+}
+
+void czekaj (int czas) {
+    #ifdef _WIN32
+        Sleep(czas*1000);
+    #else
+        sleep(czas);
+    #endif
+}
+
 char menu()
 {
     char temp{};
-    system("clear");
+    czysc_konsole();
     cout<<right<<"STATKI"<<endl;
     cout<<"1. Rozpocznij gre"<<endl;
     cout<<"2. Ustawienia"<<endl;
@@ -37,7 +54,7 @@ char menu()
     cin>>temp;
     cin.get();
     cout<<endl;
-    system("clear");
+    czysc_konsole();
 
     return temp;
 }
@@ -45,10 +62,10 @@ char menu()
 //funkcja majaca zwracac podane przez uzytkownika pole
 int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
 {
-    int* pole = new int[2];
+    int* pole = new int[3];
 
     // kolejka(2);
-    cout<<"Naciscienie klawisza ESC zakonczy rozgrywke"<<endl;
+    cout<<"Naciscienie klawisza ESC lub ! zakonczy rozgrywke"<<endl;
 
     int i=0;
     bool warunek = false;
@@ -56,13 +73,14 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
         pole[0] = 0;
         char temp{};
         cout << "Szerokosc: ";
-        cin>>temp;
-        cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu szerokości
+//        cin >> temp;
+        cin.get(temp); // Czekamy na wciśnięcie Enter po wprowadzeniu szerokości
+        cin.ignore(100, '\n');
         if(temp>='A' && temp<='Z')
             pole[0] = abs(int('A' - temp));
         else if(temp>='a' && temp<='z')
             pole[0] = abs(int('a' - temp));
-        else if (temp == 27) { //wyjscie z rozgrywki po nacisnieciu esc
+        else if (temp == 27 || temp == '!') { //wyjscie z rozgrywki po nacisnieciu esc
             pole[0] = -10;
             pole[1] = -10;
             pole[2] = -10;
@@ -84,9 +102,11 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
     warunek=false;
     while(warunek==false)   {
         char temp{};
-        cout << "Długosc: ";
-        cin >> temp;
-        cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu długości
+        cout << "Dlugosc: ";
+//        cin >> temp;
+//        cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu dlugości
+        cin.get(temp); // Czekamy na wciśnięcie Enter po wprowadzeniu szerokości
+        cin.ignore(100, '\n');
         if(temp>='0' && temp<='9'){
             pole[1] = temp-'0';
 
@@ -110,11 +130,11 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
             break;
     }
 
-    // Możesz również wczytać głębokość (G), jeśli jest potrzebna
-    // cout << "Głębokość: ";
+    // Możesz również wczytać glebokosc (G), jeśli jest potrzebna
+    // cout << "Glebokosc: ";
     // cin >> pole[2];
     pole[2] = 0;
-    // cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu głębokości
+    // cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu glebokosci
     // cout << endl;
 
     return pole;
@@ -123,7 +143,7 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
 void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne)
 {
      if (t == nullptr) {
-        cout << endl << "Błąd: pusta tablica" << endl<<endl;
+        cout << endl << "Blad: pusta tablica" << endl<<endl;
         return;
     } cout<<endl<<endl;
 
@@ -162,14 +182,14 @@ void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne)
 
 void komunikat_przed(int poprzedni_ruch[], int uzytkownik)
 {
-    system("clear");
+    czysc_konsole();
     // cout<<endl<<endl;
     cout << "Kolejka gracza: " << uzytkownik << endl;
     // cout << "Pozostale statki przeciwnika: " << pozostale_statki_aktywny_gracz << endl;
 
     static bool pierwsze_wykonanie = true;
     if (pierwsze_wykonanie == true) {
-        // cout << endl << "Błąd: pusta tablica" << endl<<endl;
+        // cout << endl << "Blad: pusta tablica" << endl<<endl;
         pierwsze_wykonanie = false;
         return;
     }
@@ -181,7 +201,7 @@ void komunikat_przed(int poprzedni_ruch[], int uzytkownik)
 //TO DO - przeniesc do gui  - funkcja wypisujaca komunikat po ruchu
 int komunikat_po(Plansza*** plansza, int zgadywane_pole[], int pozostale_statki_aktywny_gracz)//g d s
 {
-    sleep(1);
+    czekaj(1);
     cout<<"Podane pole: "<<char('A'+char(zgadywane_pole[0]))<<zgadywane_pole[1]<<'\t';
 
     int trafione{};
@@ -195,7 +215,7 @@ int komunikat_po(Plansza*** plansza, int zgadywane_pole[], int pozostale_statki_
         cout<<"NIE TRAFIONE";
     }
     cout << "\nPozostale statki przeciwnika: " << pozostale_statki_aktywny_gracz << endl << endl;
-    sleep(1);
+    czekaj(1);
     cout<<"Nacisnij przycisk Enter\n\n";
     cin.get();
 

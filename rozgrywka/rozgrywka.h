@@ -67,7 +67,13 @@ int rozgrywka();
 /**
   Funkcja w której odbywa się rozgrywka - użytkownicy podają swoje pola, pole jest sprawdzane, przyznawana jest kolejka.
 */
-void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansza*** plansza_gracz2, int& pozostale_statki_gracz1, int& pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int glebokosc, int& ile_zatopiono_gracz1, int& ile_zatopiono_gracz2, bool czy_widoczne);
+void gra(Uzytkownik gracz1, Uzytkownik gracz2,
+  Plansza*** plansza_gracz1, Plansza*** plansza_gracz2,
+  int& pozostale_statki_gracz1, int& pozostale_statki_gracz2,
+  Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[],
+  int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile,
+  int szerokosc, int dlugosc, int glebokosc,
+  int& ile_zatopiono_gracz1, int& ile_zatopiono_gracz2, bool czy_widoczne);
 
 // Funkcje do sprawdzania podanego pola //
 

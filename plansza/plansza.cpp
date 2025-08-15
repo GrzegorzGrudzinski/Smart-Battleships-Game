@@ -16,7 +16,10 @@ Plansza*** stworz_plansze(int G, int D, int S)
     for(int i=0; i<G; i++)
         for(int j=0; j<D; j++)
             for(int k=0; k<S; k++)
+              {
                 temp[i][j][k].czy_uzyte = false;
+                temp[i][j][k].statek = 0;
+              }
 
     return temp;
 }

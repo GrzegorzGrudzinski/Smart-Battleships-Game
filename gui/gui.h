@@ -59,4 +59,6 @@ void komunikaty(int numer);
 
 // void wypisz_statki(); //(mozliwe ze polacze ja z wypiszWierszami) po zakonczeniu rozgrywki narysuj plansze odkrywajac wszystkie pola (+ trafienia)
 
+void czysc_konsole();
+
 #endif // GUI_H
