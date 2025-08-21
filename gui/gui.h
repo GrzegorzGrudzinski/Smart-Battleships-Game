@@ -20,7 +20,7 @@ char menu();
     Plansza może zostać wyświetlona z widocznymi / ukrytymi statkami.
     Gdy statki są ukryte, początkowo cała plansza wypełniona będzie znakiem "#", oznaczającym nieużyte pole.
 */
-void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne);
+void wypisz_wierszami(Plansza **t, int D, int S, bool czy_widoczne);
 
 /**
     Funkcja służąca do obsługi zgadywania pola od użytkownika.
@@ -31,7 +31,7 @@ void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne);
         pole[1] = dlugosc;  \n
         pole[2] = glebokosc;\n
 */
-int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc);
+int* zgadnij_pole(int szerokosc, int dlugosc);
 
 /**
     Funkcja wyświetlająca kominikat przed wykonaniem ruchu - wyświetla numer użytkownika mającego obecnie ruch, oraz ruch, który wykonał poprzedni użytkownik
@@ -42,12 +42,12 @@ void komunikat_przed(int* poprzedni_ruch, int uzytkownik);
 /**
     Funkcja wyświetlająca komunikat po wykonaniu ruchu - Podane przez gracza pole, to czy pole zostało trafione oraz ilość pozostałych statków przeciwnika
 */
-int komunikat_po(Plansza*** plansza, int zgadywane_pole[], int pozostale_statki_aktywny_gracz);
+int komunikat_po(Plansza** plansza, int zgadywane_pole[], int pozostale_statki_aktywny_gracz);
 
 /**
     Funkcja wypisująca listę wszystkich ruchów
 */
-void wypisz_ruchy(Ruchy* w, int G, int D, int S);
+void wypisz_ruchy(Ruchy* w, int D, int S);
 
 /**
     Funkcja służąca do wyświetlania różnych komunikatów:\n

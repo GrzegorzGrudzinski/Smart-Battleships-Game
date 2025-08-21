@@ -20,11 +20,11 @@ void modyfikuj_plik_ustawienia();
     -Rozdzaj gracza (bot / uzytkownik)\n
     -Widoczność statków\n
 */
-bool otworz_plik_ustawienia(int& x,int& y, int& z, int& uzytkownik1_rodzaj, int& uzytkownik2_rodzaj, bool& czy_widoczne);
+bool otworz_plik_ustawienia(int& x,int& y, int& uzytkownik1_rodzaj, int& uzytkownik2_rodzaj, bool& czy_widoczne);
 
 /**
     Funkcja zapisująca listę wszystkich wykonanych przez graczy ruchów do pliku "log.txt" w katalogu "pliki/log/"
 */
-void zapisz_liste_ruchow(Ruchy* ruch, int G, int D, int S);
+void zapisz_liste_ruchow(Ruchy* ruch, int D, int S);
 
 #endif

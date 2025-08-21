@@ -24,22 +24,22 @@ struct Plansza ///Tworzy pole planszy do gry
 
     Zwraca jako wskaźnik tablicę trójwymiarową (trzeci wymiar jest w obecnej wersji nieużywany)
  */
-Plansza*** stworz_plansze(int G, int D, int S);
+Plansza** stworz_plansze(int D, int S);
 
 /**
     Funkcja służąca do usunięcia tablicy przechowującej planszę do gry
  */
-void usun_plansze(Plansza***& plansza, int G, int D);
+void usun_plansze(Plansza**& plansza, int D);
 
 
 /**
     Funkcja mająca oznaczyć pola planszy na których został umieszczony statek jako zajęte.
  */
-void dodaj_statek_na_plansze(Plansza***& plansza, Statek statek[],int rozmiar_statku, int numer_statku);
+void dodaj_statek_na_plansze(Plansza**& plansza, Statek statek[],int rozmiar_statku, int numer_statku);
 
 /**
     Funkcja mająca wyzerować oznaczenie pola planszy na których został umieszczony statek
  */
-void usun_statek(Plansza***& plansza, Statek statek[], int rozmiar_statku, int numer_statku);
+void usun_statek(Plansza**& plansza, Statek statek[], int rozmiar_statku, int numer_statku);
 
 #endif // PLANSZA_H

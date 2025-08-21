@@ -6,17 +6,14 @@
 
 // obsluga listy ruchow //
 
-void dodaj_ruch(Ruchy*& ruch, Plansza*** plansza_gracz, int numer_ruchu, int uzyte_pole[], int gracz, int G, int D, int S)
+void dodaj_ruch(Ruchy*& ruch, Plansza** plansza_gracz, int numer_ruchu, int uzyte_pole[], int gracz, int D, int S)
 {
     // Tworzenie kopii planszy
-    Plansza*** kopia = new Plansza**[G];
-    for (int i = 0; i < G; i++) {
-        kopia[i] = new Plansza*[D];
-        for (int j = 0; j < D; j++) {
-            kopia[i][j] = new Plansza[S];
-            for (int k = 0; k < S; k++) {
-                kopia[i][j][k] = plansza_gracz[i][j][k];
-            }
+    Plansza** kopia = new Plansza*[D];
+    for (int j = 0; j < D; j++) {
+        kopia[j] = new Plansza[S];
+        for (int k = 0; k < S; k++) {
+            kopia[j][k] = plansza_gracz[j][k];
         }
     }
 
@@ -27,7 +24,6 @@ void dodaj_ruch(Ruchy*& ruch, Plansza*** plansza_gracz, int numer_ruchu, int uzy
     nowy->plansza = kopia;
     for(int i=0; i < 3; i++)
         nowy->uzyte_pole[i] = uzyte_pole[i];
-    nowy->G = G;
     nowy->D = D;
     nowy->S = S;
     nowy->nastepny = nullptr;
@@ -52,12 +48,8 @@ void usun_liste(Ruchy*& ruch)
         ruch = ruch->nastepny;
 
         // Zwolnienie pamięci dla planszy
-        for (int i = 0; i < temp->G; i++)
-        {
-            for (int j = 0; j < temp->D; j++) {
-                delete[] temp->plansza[i][j];
-            }
-            delete[] temp->plansza[i];
+        for (int j = 0; j < temp->D; j++) {
+            delete[] temp->plansza[j];
         }
         delete[] temp->plansza;
         delete temp;
@@ -67,10 +59,10 @@ void usun_liste(Ruchy*& ruch)
 // Funkcje do obsługi rozgrywki//
 
 //wybiera metode w jaka podawane jest zgadywane pole w zaleznosci od typu gracza (bot/uzytkownik)
-int* metoda_zgadywania(int S,int D, int G, Uzytkownik gracz, Plansza*** plansza, int& ile_zatopiono)
+int* metoda_zgadywania(int S,int D, Uzytkownik gracz, Plansza** plansza, int& ile_zatopiono)
 {
-    if(gracz.rodzaj == 1) return zgadnij_pole(S,D,G);
-    else return losuj_pole(S,D,G, plansza, ile_zatopiono);
+    if(gracz.rodzaj == 1) return zgadnij_pole(S,D);
+    else return losuj_pole(S,D, plansza, ile_zatopiono);
 }
 
 //glowna petla gry - tu robione sa wszystkie nastawy przed rozgrywka po czym uruchamiana jest sama gra
@@ -79,7 +71,7 @@ int rozgrywka()
     //rozmiary planszy
     int S = 9; //domyslnie 9
     int D = 7; //domyslnie 7
-    int G = 1; //domyslnie 1(0)
+    // int G = 1; //domyslnie 1(0)
 
     // struktury przechowujace informacje o graczach
     Uzytkownik gracz1;  gracz1.rodzaj = 1; gracz1.numer = 1; //gracz
@@ -87,11 +79,11 @@ int rozgrywka()
 
     // odczytanie parametrow z pliku z ustawieniami
     bool czy_widoczne = false;
-    otworz_plik_ustawienia(S,D,G,gracz1.rodzaj,gracz2.rodzaj, czy_widoczne);
+    otworz_plik_ustawienia(S,D,gracz1.rodzaj,gracz2.rodzaj, czy_widoczne);
 
     // Tworzenie planszy
-    Plansza*** plansza_gracz1 = stworz_plansze(G,D,S);
-    Plansza*** plansza_gracz2 = stworz_plansze(G,D,S);
+    Plansza** plansza_gracz1 = stworz_plansze(D,S);
+    Plansza** plansza_gracz2 = stworz_plansze(D,S);
 
     //zmienne przechowujace ilosci statkow
     int statek_najwiekszy_ile;//dynamicznie
@@ -99,7 +91,7 @@ int rozgrywka()
     int statek_sredni_ile;
     int statek_maly_ile;
 
-    znajdz_ile_statkow(S,D,G, statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile);
+    znajdz_ile_statkow(S,D, statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile);
 
     int poczatkowa_liczba_statkow = statek_najwiekszy_ile+statek_duzy_ile+statek_sredni_ile+statek_maly_ile;
     int pozostale_statki_gracz1 = poczatkowa_liczba_statkow;
@@ -108,32 +100,32 @@ int rozgrywka()
 
     // dodaj statki na plansze - uzytkownik//
     Statek* statek_najwiekszy = new Statek[statek_najwiekszy_ile];
-    dodaj_statek( S, D, G, statek_najwiekszy, statek_najwiekszy_ile, 5, plansza_gracz1);
+    dodaj_statek( S, D, statek_najwiekszy, statek_najwiekszy_ile, 5, plansza_gracz1);
 
     Statek* statek_duzy = new Statek[statek_duzy_ile];
-    dodaj_statek( S, D, G, statek_duzy, statek_duzy_ile, 4, plansza_gracz1);
+    dodaj_statek( S, D, statek_duzy, statek_duzy_ile, 4, plansza_gracz1);
 
     Statek* statek_sredni = new Statek[statek_sredni_ile];
-    dodaj_statek(S, D, G, statek_sredni, statek_sredni_ile, 3, plansza_gracz1);
+    dodaj_statek(S, D, statek_sredni, statek_sredni_ile, 3, plansza_gracz1);
 
     Statek* statek_maly = new Statek[statek_maly_ile];
-    dodaj_statek(S, D, G, statek_maly, statek_maly_ile, 2, plansza_gracz1);
+    dodaj_statek(S, D, statek_maly, statek_maly_ile, 2, plansza_gracz1);
 
     // dodaj statki na plansze - bot//
     Statek* statek_najwiekszy2 = new Statek[statek_najwiekszy_ile];
-    dodaj_statek( S, D, G, statek_najwiekszy2, statek_najwiekszy_ile, 5, plansza_gracz2);
+    dodaj_statek( S, D, statek_najwiekszy2, statek_najwiekszy_ile, 5, plansza_gracz2);
 
     Statek* statek_duzy2 = new Statek[statek_duzy_ile];
-    dodaj_statek( S, D, G, statek_duzy2, statek_duzy_ile, 4, plansza_gracz2);
+    dodaj_statek( S, D, statek_duzy2, statek_duzy_ile, 4, plansza_gracz2);
 
     Statek* statek_sredni2 = new Statek[statek_sredni_ile];
-    dodaj_statek(S, D, G, statek_sredni2, statek_sredni_ile, 3, plansza_gracz2);
+    dodaj_statek(S, D, statek_sredni2, statek_sredni_ile, 3, plansza_gracz2);
 
     Statek* statek_maly2 = new Statek[statek_maly_ile];
-    dodaj_statek(S, D, G, statek_maly2, statek_maly_ile, 2, plansza_gracz2);
+    dodaj_statek(S, D, statek_maly2, statek_maly_ile, 2, plansza_gracz2);
 
     //rozgrywka
-    gra(gracz1,gracz2,plansza_gracz1,plansza_gracz2, pozostale_statki_gracz1, pozostale_statki_gracz2, statek_najwiekszy, statek_duzy, statek_sredni, statek_maly, statek_najwiekszy2, statek_duzy2, statek_sredni2, statek_maly2, statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile, S,D,G, ile_zatopiono_gracz1, ile_zatopiono_gracz2, czy_widoczne);
+    gra(gracz1,gracz2,plansza_gracz1,plansza_gracz2, pozostale_statki_gracz1, pozostale_statki_gracz2, statek_najwiekszy, statek_duzy, statek_sredni, statek_maly, statek_najwiekszy2, statek_duzy2, statek_sredni2, statek_maly2, statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile, S, D, ile_zatopiono_gracz1, ile_zatopiono_gracz2, czy_widoczne);
 
     // zwolnij miejsce po rozgrywce
     for(int i=0; i<statek_najwiekszy_ile; i++)
@@ -164,19 +156,19 @@ int rozgrywka()
     delete [] statek_sredni2;
     delete [] statek_maly2;
 
-    usun_plansze(plansza_gracz1,G,D);
-    usun_plansze(plansza_gracz2,G,D);
+    usun_plansze(plansza_gracz1,D);
+    usun_plansze(plansza_gracz2,D);
     // cout<<statek_duzy->rozmiar;
 
     return 0;
 }
 //Petla rozgrywki
-void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansza*** plansza_gracz2, int& pozostale_statki_gracz1, int& pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int glebokosc, int& ile_zatopiono_gracz1, int& ile_zatopiono_gracz2, bool czy_widoczne)
+void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza** plansza_gracz1, Plansza** plansza_gracz2, int& pozostale_statki_gracz1, int& pozostale_statki_gracz2, Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[], int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int szerokosc, int dlugosc, int& ile_zatopiono_gracz1, int& ile_zatopiono_gracz2, bool czy_widoczne)
 {
     Uzytkownik gracz = gracz1;   //
     int pozostale_statki_aktywny_gracz = pozostale_statki_gracz1;
     int ile_zatopiono_aktywne = ile_zatopiono_gracz1;
-    Plansza*** aktywna_plansza = plansza_gracz1; //
+    Plansza** aktywna_plansza = plansza_gracz1; //
     Statek* najwiekszy = najwiekszy1;
     Statek* duzy = duzy1;
     Statek* sredni = sredni1;
@@ -186,52 +178,52 @@ void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansz
     bool temp = false; // false - kolejka uz1, true - uz2
     bool warunek_wpisywania = false;
     Ruchy* ruch = nullptr; //do listy
-    int temp_poprzedni_ruch_u1[3]{};
-    int temp_poprzedni_ruch_u2[3]{};
+    int temp_poprzedni_ruch_u1[2]{};
+    int temp_poprzedni_ruch_u2[2]{};
     bool koniec_gry_temp = false;
 
     while(!czy_gra_zakonczona) {
         //petla do zgadywania pola - zamienia uzytkownika
         while(!warunek){
             komunikat_przed(temp_poprzedni_ruch_u2, gracz.numer);
-            wypisz_wierszami(plansza_gracz1,glebokosc,dlugosc,szerokosc, czy_widoczne);
-            wypisz_wierszami(plansza_gracz2,glebokosc,dlugosc,szerokosc, czy_widoczne);
+            wypisz_wierszami(plansza_gracz1,dlugosc,szerokosc, czy_widoczne);
+            wypisz_wierszami(plansza_gracz2,dlugosc,szerokosc, czy_widoczne);
             //zmienna przechowujaca jako tablica koordynaty zgadywanego pola - [szerokosc][dlugosc][glebokosc] - tu jest konfigurowana przed dzialaniem petli, gdzie jest aktualizowana
-            int* zgadywane_pole = metoda_zgadywania(szerokosc,dlugosc,glebokosc,gracz,aktywna_plansza, ile_zatopiono_aktywne);
+            int* zgadywane_pole = metoda_zgadywania(szerokosc,dlugosc,gracz,aktywna_plansza, ile_zatopiono_aktywne);
 
-            if (zgadywane_pole[0] == -10 || zgadywane_pole[1] == -10 || zgadywane_pole[2] == -10) {
+            if (zgadywane_pole[0] == -10 || zgadywane_pole[1] == -10 ) {
                 koniec_gry_temp = true;
                 delete[] zgadywane_pole;
                 zgadywane_pole = nullptr;
                 break;
             }
 
-            if(aktywna_plansza[zgadywane_pole[2]][zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte==true) {
+            if(aktywna_plansza[zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte==true) {
                 warunek_wpisywania = false;
                 komunikaty(2); //pole juz uzyte
             }
             else{
                 warunek_wpisywania = true;
-                aktywna_plansza[zgadywane_pole[2]][zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte=true;
+                aktywna_plansza[zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte=true;
             }
             //zgadywanie pola (do zastapienia funckja)
             while(!warunek_wpisywania) {
-                zgadywane_pole = metoda_zgadywania(szerokosc,dlugosc,glebokosc,gracz,aktywna_plansza, ile_zatopiono_aktywne);
+                zgadywane_pole = metoda_zgadywania(szerokosc,dlugosc, gracz,aktywna_plansza, ile_zatopiono_aktywne);
 
-                if (zgadywane_pole[0] == -10 || zgadywane_pole[1] == -10 || zgadywane_pole[2] == -10) {
+                if (zgadywane_pole[0] == -10 || zgadywane_pole[1] == -10) {
                     koniec_gry_temp = true;
                     delete[] zgadywane_pole;
                     zgadywane_pole = nullptr;
                     break;
                 }
 
-                if(aktywna_plansza[zgadywane_pole[2]][zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte==true) {
+                if(aktywna_plansza[zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte==true) {
                     warunek_wpisywania = false;
                     komunikaty(2); //pole juz uzyte
                 }
                 else{
                     warunek_wpisywania = true;
-                    aktywna_plansza[zgadywane_pole[2]][zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte=true;
+                    aktywna_plansza[zgadywane_pole[1]][zgadywane_pole[0]].czy_uzyte=true;
                 }
             }
             if (koniec_gry_temp) {
@@ -243,16 +235,14 @@ void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansz
             if(!temp) {
                 temp_poprzedni_ruch_u1[0] = zgadywane_pole[0];
                 temp_poprzedni_ruch_u1[1] = zgadywane_pole[1];
-                temp_poprzedni_ruch_u1[2] = zgadywane_pole[2];
 
-                dodaj_ruch(ruch, plansza_gracz1, nr_ruchu, temp_poprzedni_ruch_u1, 1, glebokosc,dlugosc,szerokosc);
+                dodaj_ruch(ruch, plansza_gracz1, nr_ruchu, temp_poprzedni_ruch_u1, 1 ,dlugosc,szerokosc);
             }
             else {
                 temp_poprzedni_ruch_u2[0] = zgadywane_pole[0];
                 temp_poprzedni_ruch_u2[1] = zgadywane_pole[1];
-                temp_poprzedni_ruch_u2[2] = zgadywane_pole[2];
 
-                dodaj_ruch(ruch, plansza_gracz2, nr_ruchu, temp_poprzedni_ruch_u2, 2, glebokosc,dlugosc,szerokosc);
+                dodaj_ruch(ruch, plansza_gracz2, nr_ruchu, temp_poprzedni_ruch_u2, 2, dlugosc,szerokosc);
             }
             nr_ruchu++;
 
@@ -294,7 +284,7 @@ void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansz
             }
 
             // wypisz_ruchy(ruch,glebokosc,dlugosc,szerokosc);
-            zapisz_liste_ruchow(ruch,glebokosc,dlugosc,szerokosc);
+            zapisz_liste_ruchow(ruch,dlugosc,szerokosc);
         }
 
         //sprawdzic czy wszystkie statki trafione - warunek zakonczenia rozgrywki(petli glownej)
@@ -311,7 +301,7 @@ void gra(Uzytkownik gracz1, Uzytkownik gracz2, Plansza*** plansza_gracz1, Plansz
 // Funkcje do sprawdzania podanego pola //
 
 //Przyjmuje jako parametr zgadywany punkt i wszystkie statki, sprawdza jaki statek znajduje sie pod takim polem
-bool czy_trafiony(Statek statek[], int statek_ile, Plansza*** plansza, int& pozostale_statki, int S, int D, int G, int& ile_zatopiono)
+bool czy_trafiony(Statek statek[], int statek_ile, Plansza** plansza, int& pozostale_statki, int S, int D, int& ile_zatopiono)
 {
     bool trafiony = false;
 
@@ -320,8 +310,6 @@ bool czy_trafiony(Statek statek[], int statek_ile, Plansza*** plansza, int& pozo
     for(int i=0; i<statek_ile; i++)
     {
         //statek moze miec punkt koncowy z roznych stron - jesli jest przed punktem "poczatkowym" to punkt ten musi zostac zaktualizowany do sprawdzenia
-        int g_poczatek =  statek[i].punkt_poczatek[2];
-        int g_koniec = statek[i].punkt_koniec[2];
         int s_poczatek,d_poczatek;
         int s_koniec,d_koniec;
         if((statek[i].punkt_poczatek[0]-statek[i].punkt_koniec[0])>0) {  //odwroc
@@ -342,20 +330,18 @@ bool czy_trafiony(Statek statek[], int statek_ile, Plansza*** plansza, int& pozo
         }
 
         //sprawdza czy podane koordynaty mieszcza sie miedzy skrajnymi punktami statku
-        if(G>=g_poczatek && G<=g_koniec) {
-            if(D>=d_poczatek && D<=d_koniec) {
-                if(S>=s_poczatek && S<=s_koniec) { //
-                    statek[i].pozostale_pola--;
-                    //jesli trafiono wszystkie pola statku zapamietaj to
-                    if(statek[i].pozostale_pola==0) {
-                        pozostale_statki--;
-                        ile_zatopiono++;
-                    }
-                    // cout<<i<<" Pozostale pola statku: "<<statek[i].pozostale_pola<<'\n';//endl;
-
-                    trafiony = true;
-                    break;
+        if(D>=d_poczatek && D<=d_koniec) {
+            if(S>=s_poczatek && S<=s_koniec) { //
+                statek[i].pozostale_pola--;
+                //jesli trafiono wszystkie pola statku zapamietaj to
+                if(statek[i].pozostale_pola==0) {
+                    pozostale_statki--;
+                    ile_zatopiono++;
                 }
+                // cout<<i<<" Pozostale pola statku: "<<statek[i].pozostale_pola<<'\n';//endl;
+
+                trafiony = true;
+                break;
             }
         }
     }
@@ -364,19 +350,19 @@ bool czy_trafiony(Statek statek[], int statek_ile, Plansza*** plansza, int& pozo
     else
         return false;
 }
-bool sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza*** plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int& pozostale_statki, int& ile_zatopiono)
+bool sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza** plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int& pozostale_statki, int& ile_zatopiono)
 {
     int S = zgadywane_pole[0];
     int D = zgadywane_pole[1];
-    int G = zgadywane_pole[2];
+    // int G = zgadywane_pole[2];
     bool warunek = false;
 
-    if(plansza[G][D][S].statek!=0)
+    if(plansza[D][S].statek!=0)
     {
-        if(czy_trafiony(najwiekszy, statek_najwiekszy_ile, plansza, pozostale_statki, S, D, G, ile_zatopiono) == true) warunek = true;
-        else if(czy_trafiony(duzy, statek_duzy_ile, plansza, pozostale_statki, S, D, G, ile_zatopiono) == true) warunek = true;
-        else if(czy_trafiony(sredni, statek_sredni_ile, plansza, pozostale_statki, S, D, G, ile_zatopiono) == true) warunek = true;
-        else if(czy_trafiony(maly, statek_maly_ile, plansza, pozostale_statki, S, D, G, ile_zatopiono) == true) warunek = true;
+        if(czy_trafiony(najwiekszy, statek_najwiekszy_ile, plansza, pozostale_statki, S, D, ile_zatopiono) == true) warunek = true;
+        else if(czy_trafiony(duzy, statek_duzy_ile, plansza, pozostale_statki, S, D, ile_zatopiono) == true) warunek = true;
+        else if(czy_trafiony(sredni, statek_sredni_ile, plansza, pozostale_statki, S, D, ile_zatopiono) == true) warunek = true;
+        else if(czy_trafiony(maly, statek_maly_ile, plansza, pozostale_statki, S, D, ile_zatopiono) == true) warunek = true;
     }
     else
         return false;

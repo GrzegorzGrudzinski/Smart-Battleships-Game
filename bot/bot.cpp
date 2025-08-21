@@ -7,7 +7,7 @@ using namespace std;
 //********        BOT         ********//
 ////////////////////////////////////////
 void znajdz_ile_statkow(
-    int szerokosc, int dlugosc, int glebokosc,
+    int szerokosc, int dlugosc,
     int& statek_najwiekszy, int& statek_duzy, int& statek_sredni, int& statek_maly,
     int poziom_trudnosci) //znajdz jakie statki mozna ustawic na planszy
 {
@@ -24,10 +24,8 @@ void znajdz_ile_statkow(
         szerokosc = 1;
     if(dlugosc == 0)
         dlugosc = 1;
-    if(glebokosc < 5)
-        glebokosc = 1;
 
-    int pole_planszy = szerokosc * dlugosc * glebokosc;
+    int pole_planszy = szerokosc * dlugosc;
 
     // Sprawdzenie poprawności pola planszy i poziomu trudności
     if (pole_planszy <= 0 || poziom_trudnosci <= 0) {
@@ -68,8 +66,8 @@ void znajdz_ile_statkow(
 
 //Przeniesc do foldera bot
 void rozstaw_statki_losowo(
-    int szerokosc, int dlugosc, int glebokosc,
-    Statek statek[], int rozmiar_statku, Plansza*** plansza, int i)
+    int szerokosc, int dlugosc,
+    Statek statek[], int rozmiar_statku, Plansza** plansza, int i)
 {
         //liczniki awaryjne do petli
         int licznik1 = 0;
@@ -80,15 +78,13 @@ void rozstaw_statki_losowo(
 
         int losuj_szerokosc;
         int losuj_dlugosc;
-        int losuj_glebokosc ;
 
         bool wylosowano = false; //flaga losowan
         while(wylosowano == false && licznik1 <= 10) { //petla losujaca pierwszy punkt statku
             losuj_szerokosc = rand()%(szerokosc);
             losuj_dlugosc = rand()%(dlugosc);
-            losuj_glebokosc = 0;//glebokosc > 0 ? rand()%(glebokosc) : 0;
 
-            if(plansza[losuj_glebokosc][losuj_dlugosc][losuj_szerokosc].statek!=0)
+            if(plansza[losuj_dlugosc][losuj_szerokosc].statek!=0)
                 wylosowano = false;
             else wylosowano = true;
 
@@ -98,12 +94,10 @@ void rozstaw_statki_losowo(
 
         statek[i].punkt_poczatek[0] = losuj_szerokosc;
         statek[i].punkt_poczatek[1] = losuj_dlugosc;
-        statek[i].punkt_poczatek[2] = losuj_glebokosc;
 
         // okresl punkt koncowy statku (najpierw przypisuje go w tym samym punkcie co punkt poczatkowy, nastepnie losuje wymiar do przesuniecia i jesli moze to go przesuwa)
         statek[i].punkt_koniec[0] = losuj_szerokosc;
         statek[i].punkt_koniec[1] = losuj_dlugosc;
-        statek[i].punkt_koniec[2] = losuj_glebokosc;
 
         int losuj_kierunek{}; //losuj kierunek
         int wspolczynnik_losowania_zwrot = 1; // okresl zwrot statku - w zaleznosci od polozenia poczatkowego statku
@@ -111,7 +105,7 @@ void rozstaw_statki_losowo(
         wylosowano = false;
         while(!wylosowano) //petla majaca wylosowac w ktora strone statek bedzie obrocony - warunkiem jej zakonczenia jest wybranie kierunku/zwrotu (lub 10 iteracji jako zabezpieczenie)
         {
-            losuj_kierunek = glebokosc < 5 ? rand()%2 : rand()%3;
+            losuj_kierunek = rand()%2;
 
             switch(losuj_kierunek) { //w zaleznosci od wybranego kierunku zadecyduj o zwrocie statku, tak zeby miescil sie w planszy (nie nachodzil na inny statek)
             case 0: // szerokość
@@ -120,7 +114,7 @@ void rozstaw_statki_losowo(
                     wylosowano = true;
 
                     for (int j = 0; j < rozmiar_statku; j++) {
-                        if (plansza[losuj_glebokosc][losuj_dlugosc][losuj_szerokosc + j * wspolczynnik_losowania_zwrot].statek != 0) {
+                        if (plansza[losuj_dlugosc][losuj_szerokosc + j * wspolczynnik_losowania_zwrot].statek != 0) {
                             wylosowano = false;
                             break;
                         }
@@ -133,14 +127,14 @@ void rozstaw_statki_losowo(
                     wylosowano = true;
 
                     for (int j = 0; j < rozmiar_statku; j++) {
-                        if (plansza[losuj_glebokosc][losuj_dlugosc + j * wspolczynnik_losowania_zwrot][losuj_szerokosc].statek != 0) {
+                        if (plansza[losuj_dlugosc + j * wspolczynnik_losowania_zwrot][losuj_szerokosc].statek != 0) {
                             wylosowano = false;
                             break;
                         }
                     }
                 }
                 break;
-
+/*
             case 2: // głębokość
                 if (losuj_glebokosc + rozmiar_statku - 1 < glebokosc || losuj_glebokosc - rozmiar_statku + 1 >= 0) {
                     wspolczynnik_losowania_zwrot = losuj_glebokosc + rozmiar_statku - 1 < glebokosc ? 1 : -1;
@@ -154,6 +148,7 @@ void rozstaw_statki_losowo(
                     }
                 }
                 break;
+*/
             }
             //jesli jest wykonywanych ponad 30 iteracji zakoncz dla bezpieczenstwa petle
             licznik2++;
@@ -181,17 +176,17 @@ void rozstaw_statki_losowo(
 
 
 
-void dodaj_statek(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza***& plansza)
+void dodaj_statek(int szerokosc, int dlugosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza**& plansza)
 {
     for(int i=0; i<statek_ile; i++) {
-        rozstaw_statki_losowo(szerokosc,dlugosc,glebokosc, statek, statek_rozmiar, plansza, i);
+        rozstaw_statki_losowo(szerokosc,dlugosc, statek, statek_rozmiar, plansza, i);
         dodaj_statek_na_plansze(plansza, statek, statek_rozmiar, i);  //../plansza/plansza.h
     }
 }
 
 //-10 = namierzono inny; -20 = zatopiono;
 //funkcja ktora obsluguje zgadywanie pola po okresleniu kierunku zgadywania
-int trafiono(Plansza*** plansza, int pole1, int pole2, int& ostatnie_pole, int pole_sprawdzajace, int kierunek, int ile_zatopiono, int szerokosc, int dlugosc, int glebokosc)
+int trafiono(Plansza** plansza, int pole1, int pole2, int& ostatnie_pole, int pole_sprawdzajace, int kierunek, int ile_zatopiono, int szerokosc, int dlugosc)
 {
     static int temp_ostatnie_pole = ostatnie_pole;
     static int czy_zatopiono_nowy = 0;
@@ -219,7 +214,7 @@ int trafiono(Plansza*** plansza, int pole1, int pole2, int& ostatnie_pole, int p
             czy_pierwsze = true;
             // nr_zgadywania++;
         }
-        else if(czy_pierwsze==true && (plansza[0][pole_dlugosc][pole_szerokosc].statek!=0) && (temp_ostatnie_pole-1 >= 0))  { //gdy ostatnie zgadywane pole trafilo kontynuuj zgadywanie w tym kierunku
+        else if(czy_pierwsze==true && (plansza[pole_dlugosc][pole_szerokosc].statek!=0) && (temp_ostatnie_pole-1 >= 0))  { //gdy ostatnie zgadywane pole trafilo kontynuuj zgadywanie w tym kierunku
                 temp_ostatnie_pole--;
         }
         else    { //jesli nie to zmien kierunek zgadywania
@@ -238,7 +233,7 @@ int trafiono(Plansza*** plansza, int pole1, int pole2, int& ostatnie_pole, int p
             }
             czy_pierwsze = true;
         }
-        else if(czy_pierwsze==true && (plansza[0][pole_dlugosc][pole_szerokosc].statek!=0)&&(temp_ostatnie_pole + 1 < zakres))  { //gdy ostatnie zgadywane pole trafilo kontynuuj zgadywanie w tym kierunku
+        else if(czy_pierwsze==true && (plansza[pole_dlugosc][pole_szerokosc].statek!=0)&&(temp_ostatnie_pole + 1 < zakres))  { //gdy ostatnie zgadywane pole trafilo kontynuuj zgadywanie w tym kierunku
                 temp_ostatnie_pole++;
         }
         else    { //jesli nie to zmien kierunek zgadywania
@@ -268,7 +263,7 @@ int trafiono(Plansza*** plansza, int pole1, int pole2, int& ostatnie_pole, int p
     return ostatnie_pole;
 }
 
-int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, int ile_zatopiono)
+int* losuj_pole(int szerokosc, int dlugosc,  Plansza** plansza, int ile_zatopiono)
 {
     // komunikaty(2);//kolejka gracza
 
@@ -285,22 +280,19 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
 
     int losuj_szerokosc{};
     int losuj_dlugosc{};
-    int losuj_glebokosc = 0;//glebokosc > 0 ? rand()%(glebokosc) : 0;
 
     if(statek_namierzony == false) { //jesli nie trafiono statku losuj na calej planszy
         // cout<<"Losuje na calej planszy"<<endl;
 
         losuj_szerokosc = rand()%(szerokosc);
         losuj_dlugosc = rand()%(dlugosc);
-        losuj_glebokosc = 0;//glebokosc > 0 ? rand()%(glebokosc) : 0;
 
         //jesli trafiony
-        if((plansza[losuj_glebokosc][losuj_dlugosc][losuj_szerokosc].statek!=0)) {
+        if((plansza[losuj_dlugosc][losuj_szerokosc].statek!=0)) {
             statek_namierzony = true;
             //zawez przedzial losowania - TO DO - zapisz koordynaty trafionego pola (nastepne losowania odbeda sie w jego otoczeniu)
             s_trafione_pole1 = losuj_szerokosc;
             d_trafione_pole1 = losuj_dlugosc;
-            // glebokosc = losuj_glebokosc;
             // czy_dziala = false;
         }
     }
@@ -345,9 +337,8 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
                     // cout<<"ERROR"<<endl;
                     break;
             }
-            losuj_glebokosc = 0;//glebokosc > 0 ? rand()%(glebokosc) : 0;
 
-            if((plansza[losuj_glebokosc][losuj_dlugosc][losuj_szerokosc].statek!=0) && ((losuj_szerokosc-s_trafione_pole1)!=0||(losuj_dlugosc-d_trafione_pole1)!=0)) {
+            if((plansza[losuj_dlugosc][losuj_szerokosc].statek!=0) && ((losuj_szerokosc-s_trafione_pole1)!=0||(losuj_dlugosc-d_trafione_pole1)!=0)) {
                 kierunek_namierzony = true;
                 s_trafione_pole2 = losuj_szerokosc;
                 d_trafione_pole2 = losuj_dlugosc;
@@ -372,7 +363,7 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
             //sprecyzuj kierunek
             if((s_trafione_pole1-s_trafione_pole2) == 0) { //losuj dlugosc
                 // cout<<"Losuje w kierunku dlugosc"<<endl;
-                trafiono(plansza, d_trafione_pole1, d_trafione_pole2, ostatnie_zgadywane_pole, s_trafione_pole1, 1, ile_zatopiono, szerokosc,dlugosc,glebokosc);
+                trafiono(plansza, d_trafione_pole1, d_trafione_pole2, ostatnie_zgadywane_pole, s_trafione_pole1, 1, ile_zatopiono, szerokosc,dlugosc);
                 if(ostatnie_zgadywane_pole == -10){
                     // cout<<"losuje ponownie kierunek"<<endl;
                     kierunek_namierzony = false;
@@ -384,7 +375,7 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
                     losuj_szerokosc = rand()%(szerokosc);
                     losuj_dlugosc = rand()%(dlugosc);
                     //sprawdz czy na wylosowanym polu nie ma statku
-                    if((plansza[losuj_glebokosc][losuj_dlugosc][losuj_szerokosc].statek!=0)){
+                    if((plansza[losuj_dlugosc][losuj_szerokosc].statek!=0)){
                         statek_namierzony = true;
                         kierunek_namierzony = false;
 
@@ -404,7 +395,7 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
             }
             else if((d_trafione_pole1-d_trafione_pole2) == 0){ //losuj szerokosc
                 // cout<<"Losuje w kierunku szerokosc"<<endl;
-                trafiono(plansza, s_trafione_pole1, s_trafione_pole2, ostatnie_zgadywane_pole, d_trafione_pole1, 2, ile_zatopiono, szerokosc,dlugosc,glebokosc);
+                trafiono(plansza, s_trafione_pole1, s_trafione_pole2, ostatnie_zgadywane_pole, d_trafione_pole1, 2, ile_zatopiono, szerokosc,dlugosc);
                 if(ostatnie_zgadywane_pole == -10){
                     // cout<<"losuje ponownie kierunek"<<endl;
                     kierunek_namierzony = false;
@@ -435,7 +426,6 @@ int* losuj_pole(int szerokosc, int dlugosc, int glebokosc,  Plansza*** plansza, 
     //zapisz uzyte pole do zwrocenia
     pole[0] = losuj_szerokosc;
     pole[1] = losuj_dlugosc;
-    pole[2] = 0;
 
     /*//////////////////////////////////////////////////
      cout<<"Zgadywane wspolrzedne (SDG): "<<pole[0]<<pole[1]<<pole[2]<<endl;

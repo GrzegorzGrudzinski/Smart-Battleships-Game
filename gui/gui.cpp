@@ -3,7 +3,10 @@
 #include <iomanip>
 #include <cstdlib>
 #include <unistd.h> //sleep
-#include <windows.h> // Wymagane na Windows
+
+#ifdef _WIN32
+    #include <windows.h> // Wymagane na Windows
+#endif
 
 #include "../plansza/plansza.h"
 #include "gui.h"
@@ -60,7 +63,7 @@ char menu()
 }
 
 //funkcja majaca zwracac podane przez uzytkownika pole
-int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
+int* zgadnij_pole(int szerokosc, int dlugosc)
 {
     int* pole = new int[3];
 
@@ -83,7 +86,6 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
         else if (temp == 27 || temp == '!') { //wyjscie z rozgrywki po nacisnieciu esc
             pole[0] = -10;
             pole[1] = -10;
-            pole[2] = -10;
 
             return pole;
         }
@@ -119,7 +121,7 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
         else if (temp == 27) { //wyjscie z rozgrywki po nacisnieciu esc
             pole[0] = -10;
             pole[1] = -10;
-            pole[2] = -10;
+
             return pole;
         }
         else {
@@ -130,26 +132,20 @@ int* zgadnij_pole(int szerokosc, int dlugosc, int glebokosc)
             break;
     }
 
-    // Możesz również wczytać glebokosc (G), jeśli jest potrzebna
-    // cout << "Glebokosc: ";
-    // cin >> pole[2];
-    pole[2] = 0;
     // cin.get(); // Czekamy na wciśnięcie Enter po wprowadzeniu glebokosci
     // cout << endl;
 
     return pole;
 }
 
-void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne)
+void wypisz_wierszami(Plansza **t, int D, int S, bool czy_widoczne)
 {
      if (t == nullptr) {
         cout << endl << "Blad: pusta tablica" << endl<<endl;
         return;
     } cout<<endl<<endl;
 
-    //k 0-8; j 0-6; G 0
-    for(int i=0; i<G; i++)  {
-        cout << "glebokosc " << i << ':'<< endl;
+    //k 0-8; j 0-6;
 
         //wypisz numer kolumny
         for(int k=0; k<=S; k++)  {
@@ -159,24 +155,23 @@ void wypisz_wierszami(Plansza ***t, int G, int D, int S, bool czy_widoczne)
                 cout << setw(3) << char('A'+k-1);
         } cout << endl;
 
-        for(int j=0; j<D; j++)  {
-            for(int k=0; k<S; k++)  {
-                //wypisz numer wiersza
-                if(k==0) cout << setw(3) << j << '.';
-                if((t[i][j][k].czy_uzyte!=0) && (t[i][j][k].statek!=0))
-                    cout << setw(3) << '*';
+    for(int j=0; j<D; j++)  {
+        for(int k=0; k<S; k++)  {
+            //wypisz numer wiersza
+            if(k==0) cout << setw(3) << j << '.';
+            if((t[j][k].czy_uzyte!=0) && (t[j][k].statek!=0))
+                cout << setw(3) << '*';
 
-                //wypelnij plansze
-                else if((t[i][j][k].czy_uzyte!=0) && (t[i][j][k].statek==0))
-                    cout << setw(3) << '.';
-                else{
-                    if(czy_widoczne == true)
-                        cout << setw(3) << t[i][j][k].statek;
-                    else
-                        cout << setw(3) << '#';
-                }
-            } cout << endl;
-        }
+            //wypelnij plansze
+            else if((t[j][k].czy_uzyte!=0) && (t[j][k].statek==0))
+                cout << setw(3) << '.';
+            else{
+                if(czy_widoczne == true)
+                    cout << setw(3) << t[j][k].statek;
+                else
+                    cout << setw(3) << '#';
+            }
+        } cout << endl;
     } cout << endl << endl;
 }
 
@@ -199,13 +194,13 @@ void komunikat_przed(int poprzedni_ruch[], int uzytkownik)
 }
 
 //TO DO - przeniesc do gui  - funkcja wypisujaca komunikat po ruchu
-int komunikat_po(Plansza*** plansza, int zgadywane_pole[], int pozostale_statki_aktywny_gracz)//g d s
+int komunikat_po(Plansza** plansza, int zgadywane_pole[], int pozostale_statki_aktywny_gracz)//g d s
 {
     czekaj(1);
     cout<<"Podane pole: "<<char('A'+char(zgadywane_pole[0]))<<zgadywane_pole[1]<<'\t';
 
     int trafione{};
-    if(plansza[zgadywane_pole[2]][zgadywane_pole[1]][zgadywane_pole[0]].statek != 0){
+    if(plansza[zgadywane_pole[1]][zgadywane_pole[0]].statek != 0){
         // int rozmiar_poczatkowy_statku = plansza[zgadywane_pole[0]][zgadywane_pole[1]][zgadywane_pole[2]].statek;
         trafione = 1;
         cout<<"TRAFIONE";
@@ -229,7 +224,7 @@ int komunikat_po(Plansza*** plansza, int zgadywane_pole[], int pozostale_statki_
     */
 }
 
-void wypisz_ruchy(Ruchy* w, int G, int D, int S)
+void wypisz_ruchy(Ruchy* w, int D, int S)
 {
     if(w == nullptr)
         return;
@@ -241,22 +236,20 @@ void wypisz_ruchy(Ruchy* w, int G, int D, int S)
     {
         cout << w->numer_ruchu << endl;
 
-        for(int i=0; i<G; i++) {
-            for(int j=0; j<D; j++) {
-                for(int k=0; k<S; k++) {
-                    // cout <<  w->plansza[i][j][k].statek;
-                    if((w->plansza[i][j][k].czy_uzyte!=0) && (w->plansza[i][j][k].statek!=0)) {
-                        cout << std::setw(3) << '*';
-                    }
-                    else if((w->plansza[i][j][k].czy_uzyte!=0) && (w->plansza[i][j][k].statek==0)) {
-                        cout << std::setw(3) << '.';
-                    }
-                    else {
-                        cout << std::setw(3) << w->plansza[i][j][k].statek;
-                    }
+        for(int j=0; j<D; j++) {
+            for(int k=0; k<S; k++) {
+                // cout <<  w->plansza[i][j][k].statek;
+                if((w->plansza[j][k].czy_uzyte!=0) && (w->plansza[j][k].statek!=0)) {
+                    cout << std::setw(3) << '*';
+                }
+                else if((w->plansza[j][k].czy_uzyte!=0) && (w->plansza[j][k].statek==0)) {
+                    cout << std::setw(3) << '.';
+                }
+                else {
+                    cout << std::setw(3) << w->plansza[j][k].statek;
+                }
 
-                } cout << endl;
-            }
+            } cout << endl;
         } cout << endl;
 
         cout << "Uzyte pole: " ;

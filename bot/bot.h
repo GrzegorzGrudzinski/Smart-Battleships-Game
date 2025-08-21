@@ -30,19 +30,19 @@
 
     gdzie domyslna_powierzchnia_statkow to  suma pola wszystkich statkow w domyslnej ilosci + 1
 */
-void znajdz_ile_statkow(int szerokosc, int dlugosc, int glebokosc, int& statek_najwiekszy, int& statek_duzy, int& statek_sredni, int& statek_maly,int poziom_trudnosci = 1);
+void znajdz_ile_statkow(int szerokosc, int dlugosc, int& statek_najwiekszy, int& statek_duzy, int& statek_sredni, int& statek_maly,int poziom_trudnosci = 1);
 
 /**
     Funkcja rozstawia w sposob losowy statki na planszy
     Przyjmuje jako parametry rozmiary planszy, statek który ma zostać umieszczony na planszy, plansze na której statek ma zostać umieszczony i numer statku (i)
 
 */
-void rozstaw_statki_losowo(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int rozmiar_statku, Plansza*** plansza, int i);
+void rozstaw_statki_losowo(int szerokosc, int dlugosc, Statek statek[], int rozmiar_statku, Plansza** plansza, int i);
 
 /**
     Funkcja ktora po wywolaniu umieszcza wszystkie statki danego typu na planszy - losuje jego pozycje a nastepnie oznacza pola planszy jako zajete
 */
-void dodaj_statek(int szerokosc, int dlugosc, int glebokosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza***& plansza);
+void dodaj_statek(int szerokosc, int dlugosc, Statek statek[], int statek_ile, int statek_rozmiar, Plansza**& plansza);
 
 
 // FUNKCJE DO OBSLUGI LOSOWAN BOTA //
@@ -59,11 +59,11 @@ void dodaj_statek(int szerokosc, int dlugosc, int glebokosc, Statek statek[], in
         pole[1] = dlugosc;  \n
         pole[2] = glebokosc;\n
 */
-int* losuj_pole(int szerokosc, int dlugosc, int glebokosc, Plansza*** plansza, int ile_zatopiono); /*losuj pole uzytkownika -  */
+int* losuj_pole(int szerokosc, int dlugosc, Plansza** plansza, int ile_zatopiono); /*losuj pole uzytkownika -  */
 
 /**
     Funkcja zgadująca pola statku, gdy znany jest kierunek w jakim jest ustawiony (na podstawie dwóch sąsiednich zgadniętych pól)
 */
-int trafiono(Plansza*** plansza, int pole1, int pole2, int& ostatnie_pole, int pole_sprawdzajace, int kierunek, int ile_zatopiono, int szerokosc, int dlugosc, int glebokosc);
+int trafiono(Plansza** plansza, int pole1, int pole2, int& ostatnie_pole, int pole_sprawdzajace, int kierunek, int ile_zatopiono, int szerokosc, int dlugosc);
 
 #endif

@@ -15,7 +15,7 @@ using std::ofstream;
 
 void utworz_plik_ustawienia()
 {
-    int x{9},y{7},z{1};//wartosci domyslne
+    int x{9},y{7};//wartosci domyslne
     int uzytkownik1_rodzaj{1},uzytkownik2_rodzaj{2};
     bool czy_widoczne = false;
 
@@ -28,7 +28,6 @@ void utworz_plik_ustawienia()
     else{
         plik_ustawienia_zapis << x << "\n"; //s
         plik_ustawienia_zapis << y << "\n"; //d
-        plik_ustawienia_zapis << z << "\n"; //g
 
         plik_ustawienia_zapis << uzytkownik1_rodzaj << "\n"; //1 = uzytkownik, 2 = bot
         plik_ustawienia_zapis << uzytkownik2_rodzaj << "\n"; //1 = uzytkownik, 2 = bot
@@ -41,7 +40,7 @@ void utworz_plik_ustawienia()
 void modyfikuj_plik_ustawienia()
 {
 
-    int x{9},y{7},z{1};//wartosci domyslne
+    int x{9},y{7};//wartosci domyslne
     int uzytkownik1_rodzaj{1}, uzytkownik2_rodzaj{2};
     bool czy_widoczne = false;
 
@@ -51,7 +50,6 @@ void modyfikuj_plik_ustawienia()
     if (plik_odczyt.is_open()) {
         plik_odczyt >> x;
         plik_odczyt >> y;
-        plik_odczyt >> z;
         plik_odczyt >> uzytkownik1_rodzaj;
         plik_odczyt >> uzytkownik2_rodzaj;
         plik_odczyt >> czy_widoczne;
@@ -65,7 +63,7 @@ void modyfikuj_plik_ustawienia()
     char menu_wyboru{};
     cout << "1. Szerokosc planszy: " << x << endl;
     cout << "2. Dlugosc planszy: " << y << endl;
-    cout << "3. Glebokosc planszy (nie zmieniac!): " << z << endl;
+    // cout << "3. Glebokosc planszy (nie zmieniac!): " << z << endl;
     cout << "4. Rodzaj gracza 1: " << (uzytkownik1_rodzaj == 1 ? "Uzytkownik" : "Bot") << endl;
     cout << "5. Rodzaj gracza 2: " << (uzytkownik2_rodzaj == 1 ? "Uzytkownik" : "Bot") << endl;
     cout << "6. Statki widoczne: " << (czy_widoczne == 1 ? "Tak" : "Nie") << endl;
@@ -95,7 +93,7 @@ void modyfikuj_plik_ustawienia()
                 return;
             }
             break;
-        case '3':
+  /*      case '3':
             cout<<"Wpisz glebokosc: ";
             cin>>z; cin.get(); cout<<endl;
             if (cin.fail() || y!=1 ) {
@@ -103,7 +101,7 @@ void modyfikuj_plik_ustawienia()
                 cin.ignore(); //
                 return;
             }
-            break;
+            break;*/
         case '4':
             cout<<"Wpisz rodzaj gracza 1 (1-Uzytkownik, 2-Bot): ";
             cin>>uzytkownik1_rodzaj; cin.get(); cout<<endl;
@@ -137,7 +135,7 @@ void modyfikuj_plik_ustawienia()
             }
             break;
         case '7': //domyslne
-            x=9; y=7; z=1;
+            x=9; y=7;
             uzytkownik1_rodzaj=1; uzytkownik2_rodzaj=2;
             czy_widoczne = false;
             break;
@@ -153,7 +151,7 @@ void modyfikuj_plik_ustawienia()
     cout<<"Obecne ustawienia: "<<endl;
     cout << "1. Szerokosc planszy: " << x << endl;
     cout << "2. Dlugosc planszy: " << y << endl;
-    cout << "3. Glebokosc planszy: " << z << endl;
+    // cout << "3. Glebokosc planszy: " << z << endl;
     cout << "4. Rodzaj uzytkownika 1: " << uzytkownik1_rodzaj << endl;
     cout << "5. Rodzaj uzytkownika 2: " << uzytkownik2_rodzaj << endl;
     cout << "6. Statki widoczne: " << czy_widoczne << endl;
@@ -168,7 +166,6 @@ void modyfikuj_plik_ustawienia()
     else{
         plik_ustawienia_zapis << x << "\n"; //s
         plik_ustawienia_zapis << y << "\n"; //d
-        plik_ustawienia_zapis << z << "\n"; //g
 
         plik_ustawienia_zapis << uzytkownik1_rodzaj << "\n";
         plik_ustawienia_zapis << uzytkownik2_rodzaj << "\n";
@@ -178,14 +175,13 @@ void modyfikuj_plik_ustawienia()
     plik_ustawienia_zapis.close();
 }
 
-bool otworz_plik_ustawienia(int& x,int& y, int& z, int& uzytkownik1_rodzaj, int& uzytkownik2_rodzaj, bool& czy_widoczne)
+bool otworz_plik_ustawienia(int& x,int& y, int& uzytkownik1_rodzaj, int& uzytkownik2_rodzaj, bool& czy_widoczne)
 {
     ifstream plik_odczyt;
     plik_odczyt.open("../ustawienia.txt");
     if (plik_odczyt.is_open()) {
         plik_odczyt >> x;
         plik_odczyt >> y;
-        plik_odczyt >> z;
         plik_odczyt >> uzytkownik1_rodzaj;
         plik_odczyt >> uzytkownik2_rodzaj;
         plik_odczyt >> czy_widoczne;
@@ -198,7 +194,7 @@ bool otworz_plik_ustawienia(int& x,int& y, int& z, int& uzytkownik1_rodzaj, int&
     }
 }
 
-void zapisz_liste_ruchow(Ruchy* ruch, int G, int D, int S)
+void zapisz_liste_ruchow(Ruchy* ruch, int D, int S)
 {
     if(ruch == nullptr){ //sprawdz czy nie zostala przekazana pusta lista
         cout<<"Pusta lista"<<endl;
@@ -216,24 +212,23 @@ void zapisz_liste_ruchow(Ruchy* ruch, int G, int D, int S)
             plik_lista_zapis << "\n*** Ruch numer: " << ruch->numer_ruchu << "\n";
             plik_lista_zapis << "Gracz: "<< ruch->uzytkownik <<'\n';
             //zapisz plansze
-            for(int i=0; i<G; i++) {
-                for(int j=0; j<D; j++) {
-                    for(int k=0; k<S; k++) {
-                        // plik_lista_zapis <<  ruch->plansza[i][j][k].statek;
-                        //
-                        if((ruch->plansza[i][j][k].czy_uzyte!=0) && (ruch->plansza[i][j][k].statek!=0)) {
-                            plik_lista_zapis << std::setw(3) << '*';
-                        }
-                        else if((ruch->plansza[i][j][k].czy_uzyte!=0) && (ruch->plansza[i][j][k].statek==0)) {
-                            plik_lista_zapis << std::setw(3) << '.';
-                        }
-                        else {
-                            plik_lista_zapis << std::setw(3) << ruch->plansza[i][j][k].statek;
-                        }
+            for(int j=0; j<D; j++) {
+                for(int k=0; k<S; k++) {
+                    // plik_lista_zapis <<  ruch->plansza[i][j][k].statek;
+                    //
+                    if((ruch->plansza[j][k].czy_uzyte!=0) && (ruch->plansza[j][k].statek!=0)) {
+                        plik_lista_zapis << std::setw(3) << '*';
                     }
-                    plik_lista_zapis << "\n";
+                    else if((ruch->plansza[j][k].czy_uzyte!=0) && (ruch->plansza[j][k].statek==0)) {
+                        plik_lista_zapis << std::setw(3) << '.';
+                    }
+                    else {
+                        plik_lista_zapis << std::setw(3) << ruch->plansza[j][k].statek;
+                    }
                 }
+                plik_lista_zapis << "\n";
             }
+
             plik_lista_zapis << "Uzyte pole: ";
             for(int i=0; i<=2; i++)
                 plik_lista_zapis << ruch->uzyte_pole[i]<< "\t";
