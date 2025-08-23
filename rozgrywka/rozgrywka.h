@@ -1,10 +1,10 @@
 #ifndef ROZGRYWKA_H
 #define ROZGRYWKA_H
 
-#include <cstring>
+#include <string>
 #include "../plansza/plansza.h"
 
-// using std::string;
+using std::string;
 
 
 // STRUKTURY //
@@ -48,30 +48,33 @@ struct Statek {
     int pozostale_pola;
 };
 
-/*
-class Statek {
+class StatekRoboczo {
   private:
-
-    //informacje o polozeniu statku
+    //informacje o statku
 
     /// pierwszy punkt w którym umieszczony jest statek
-    int punkt_poczatek[3];
+    int punkt_poczatek[2];
     /// ostatni punkt w którym umieszczony jest statek
-    int punkt_koniec[3];
+    int punkt_koniec[2];
     /// rozmiar statku - liczba pól jaką zajmował będzie na planszy
-    int rozmiar;
+    const int rozmiar;
     /// liczba pól które nie zostały jeszcze zatopione przez przeciwnika
     int pozostale_pola;
 
-    public:
-      Statek (int rozmiar);
+    // const string nazwa;
 
-      bool czy_zatopiony() const;
+  public:
+      StatekRoboczo();
+      StatekRoboczo(int r);
 
+      bool CzyZatopiony() const;
 
-      ~Statek();
+      void Trafienie();
 
-}*/
+      void PrzypiszPole();
+
+      // ~Statek();
+};
 
 /// Struktura przechowująca informacje o numerze i rodzaju gracza (bot / uzytkownik)
 struct Uzytkownik {
@@ -84,13 +87,12 @@ struct Uzytkownik {
  *
  */
 struct Player_Info {
-  Uzytkownik numer_gracza;
-  Plansza*** plansza;
-  int& pozostale_statki;
+  Uzytkownik gracz;
+  Plansza** plansza;
+  int pozostale_statki;
   int statek_najwiekszy_ile, statek_duzy_ile, statek_sredni_ile, statek_maly_ile;
-  // Statek najwiekszy1[statek_najwiekszy_ile], duzy1[statek_duzy_ile], sredni1[statek_sredni_ile], maly1[statek_maly_ile];
-  int szerokosc, dlugosc, glebokosc;
-  int& ile_zatopiono;
+  Statek *najwiekszy, *duzy, *sredni, *maly;
+  int ile_zatopiono;
 };
 
 // Funkcje do obsługi rozgrywki//
@@ -104,15 +106,11 @@ int rozgrywka();
 /**
   Funkcja w której odbywa się rozgrywka - użytkownicy podają swoje pola, pole jest sprawdzane, przyznawana jest kolejka.
 */
-void gra(Uzytkownik gracz1, Uzytkownik gracz2,
-  Plansza** plansza_gracz1, Plansza** plansza_gracz2,
-  int& pozostale_statki_gracz1, int& pozostale_statki_gracz2,
-  Statek najwiekszy1[], Statek duzy1[], Statek sredni1[], Statek maly1[], Statek najwiekszy2[], Statek duzy2[], Statek sredni2[], Statek maly2[],
-  int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile,
-  int szerokosc, int dlugosc,
-  int& ile_zatopiono_gracz1, int& ile_zatopiono_gracz2, bool czy_widoczne);
+void gra(Player_Info gracz1, Player_Info gracz2, int szerokosc, int dlugosc, bool czy_widoczne);
 
 // Funkcje do sprawdzania podanego pola //
+
+int* metoda_zgadywania(int S,int D, Uzytkownik gracz, Plansza** plansza, int& ile_zatopiono);
 
 /// Funkcja sprawdzająca, czy na podanym polu planszy znajduje się jakiś statek - zwraca true, jeśli go znajdzie.
 bool sprawdz_pole(Statek najwiekszy[], Statek duzy[], Statek sredni[], Statek maly[], int zgadywane_pole[], Plansza** plansza, int statek_najwiekszy_ile, int statek_duzy_ile, int statek_sredni_ile, int statek_maly_ile, int& pozostale_statki, int& ile_zatopiono);
